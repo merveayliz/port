@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-behavior-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayliz.dev | Front-End Developer & UI Designer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              pudra: {
+                light: '#FFF6F6',
+                DEFAULT: '#FFDEE9',
+                dark: '#FFE4E4',
+                accent: '#FF8A8A'
+              }
+            },
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              outfit: ['Outfit', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+        .magic-cursor {
+            position: fixed;
+            pointer-events: none;
+            width: 24px;
+            height: 24px;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease-out;
+        }
+        .magic-cursor::before,
+        .magic-cursor::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 12px;
+            height: 20px;
+            border-radius: 12px 12px 0 0;
+            background: #FF8A8A;
+        }
+        .magic-cursor::before {
+            left: 12px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .magic-cursor::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .bubble {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.6);
+            animation: floatUp 1.2s ease-out forwards;
+            z-index: 9999;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-80px) scale(1.3); opacity: 0; }
+        }
+        
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="bg-pudra-light dark:bg-[#0B0B0C] text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 overflow-x-hidden">
+
+    <div id="splash-screen" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-pudra-light via-pudra to-pudra-dark transition-all duration-1000 ease-in-out">
+        <div class="text-center mb-12 animate-pulse">
+            <h2 class="font-outfit text-5xl lg:text-7xl font-black text-gray-800 tracking-widest drop-shadow-[0_4px_10px_rgba(255,138,138,0.5)]">
+                AYLİZ<span class="text-pudra-accent">.DEV</span>
+            </h2>
+            <p class="text-gray-600 mt-3 font-semibold text-xs lg:text-sm uppercase tracking-widest">Select Language / Dil Seçin / 언어 선택</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 max-w-3xl w-full">
+            <button onclick="selectLanguage('tr')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
+                <span class="text-3xl mb-2">🇹🇷</span>
+                <span class="font-bold text-sm text-gray-700 group-hover:text-white">Türkçe</span>
+            </button>
+            <button onclick="selectLanguage('en')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
+                <span class="text-3xl mb-2">🇬🇧</span>
+                <span class="font-bold text-sm text-gray-700 group-hover:text-white">English</span>
+            </button>
+            <button onclick="selectLanguage('de')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
+                <span class="text-3xl mb-2">🇩🇪</span>
+                <span class="font-bold text-sm text-gray-700 group-hover:text-white">Deutsch</span>
+            </button>
+            <button onclick="selectLanguage('ko')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
+                <span class="text-3xl mb-2">🇰🇷</span>
+                <span class="font-bold text-sm text-gray-700 group-hover:text-white">한국어</span>
+            </button>
+        </div>
+    </div>
+
+
+    <nav class="sticky top-0 z-50 w-full bg-white/70 dark:bg-[#0B0B0C]/70 backdrop-blur-xl border-b border-gray-200/40 dark:border-gray-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
+            
+            <div class="font-outfit font-black text-2xl tracking-wider text-gray-800 dark:text-white">
+                AYLİZ<span class="text-pudra-accent">.DEV</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#about" id="nav-about" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Ben Kimim?</a>
+                <a href="#tech-stack" id="nav-tech" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Yetenekler</a>
+                <a href="#projects" id="nav-projects" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Projeler</a>
+                <a href="#contact" id="nav-contact" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">İletişim</a>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-6">
+                <button onclick="toggleDarkMode()" class="p-2.5 rounded-full bg-gray-100/80 dark:bg-gray-800/80 hover:scale-110 active:scale-95 transition-all duration-300" id="theme-btn">
+                    <span class="text-lg" id="theme-icon">☀️</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:scale-105 active:scale-95 transition-all duration-300 md:hidden text-gray-700 dark:text-gray-300" id="mobile-menu-btn" aria-label="Menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/95 dark:bg-[#0B0B0C]/95 backdrop-blur-2xl border-b border-gray-200/50 dark:border-gray-800/50 flex flex-col p-6 gap-4 shadow-xl md:hidden animate-fadeIn">
+                <a href="#about" id="mobile-nav-about" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Ben Kimim?</a>
+                <a href="#tech-stack" id="mobile-nav-tech" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Yetenekler</a>
+                <a href="#projects" id="mobile-nav-projects" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Projeler</a>
+                <a href="#contact" id="mobile-nav-contact" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">İletişim</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="about" class="max-w-6xl mx-auto px-6 py-16 lg:py-24">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <div class="w-full lg:w-2/5 flex justify-center">
+                <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2rem] overflow-hidden group shadow-[0_20px_50px_rgba(255,138,138,0.2)] dark:shadow-none border-4 border-white dark:border-gray-800">
+                    <img src="img/w.jpeg" alt="Merve Ayliz" class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-pudra-accent/30 to-transparent"></div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-3/5 text-center lg:text-left">
+                <span id="hero-badge" class="inline-block px-4 py-1.5 bg-pudra/80 dark:bg-pudra-accent/10 text-pudra-accent font-bold text-xs rounded-full uppercase tracking-widest mb-4">Web Developer & UI/UX Designer</span>
+                <h1 id="hero-title" class="font-outfit text-4xl sm:text-5xl font-black text-gray-900 dark:text-white leading-tight mb-6">
+                    Fikirden Koda,<br><span class="bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent">Dijital Sanat.</span>
+                </h1>
+                <p id="hero-desc" class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-light">
+                    Ben <b class="font-semibold text-gray-900 dark:text-white">Merve Ayliz</b>. Tasarımın estetiğini web teknolojileriyle buluşturuyorum. AI entegrasyonu ve modern araçlarla dinamik kullanıcı deneyimleri kurgularken, gelişim yolculuğumu her gün LinkedIn'de toplulukla paylaşıyorum.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <a href="#projects" id="btn-view-projects" class="px-8 py-3.5 bg-pudra-accent text-white font-bold text-sm rounded-full shadow-lg shadow-pudra-accent/30 hover:scale-105 hover:shadow-xl hover:shadow-pudra-accent/40 active:scale-95 transition-all duration-300">PROJELERİ İNCELE</a>
+                    <a href="#contact" id="btn-contact-me" class="px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold text-sm rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300">BANA ULAŞIN</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="tech-stack" class="max-w-6xl mx-auto px-6 py-12">
+        <h3 id="tech-title" class="font-outfit text-2xl font-black text-center mb-2 tracking-wide">Teknoloji & Yetenek Matrisi</h3>
+        <p id="tech-subtitle" class="text-center text-xs text-gray-400 dark:text-gray-500 mb-10">Uyguladığım standartlar, diller ve aktif olarak uzmanlaştığım güncel yapılar.</p>
+        
+        <div class="space-y-8">
+            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md">
+                <h4 id="tech-sec1" class="text-xs font-black uppercase tracking-widest text-pudra-accent mb-4">Arayüz Standartları & Şablon Yapıları</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-orange-500">HTML5</b> <span class="tech-sub-html">(İşaretleme Standartları)</span></span>
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-blue-500">CSS3</b> <span class="tech-sub-css">(Görsel Stil Mimarisi)</span></span>
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-teal-500">Tailwind CSS</b> <span class="tech-sub-tw">(Atomik Stil Yönetimi)</span></span>
+                    <span id="tech-uiux" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2">🎨 UI/UX Dizayn & Prototipleme</span>
+                </div>
+            </div>
+
+            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md">
+                <h4 id="tech-sec2" class="text-xs font-black uppercase tracking-widest text-blue-500 mb-4">Hakim Olunan Programlama Dilleri</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-yellow-500">JavaScript</b> <span class="tech-sub-js">(ES6+ İleri Seviye Mantık)</span></span>
+                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-indigo-500">PHP</b> <span class="tech-sub-php">(Dinamik Sunucu Yönetimi)</span></span>
+                </div>
+            </div>
+
+            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md relative overflow-hidden">
+                <div id="badge-learning" class="absolute top-0 right-0 bg-amber-500 text-white font-bold text-[9px] uppercase px-3 py-1 rounded-bl-xl tracking-wider animate-pulse">Geliştiriliyor</div>
+                <h4 id="tech-sec3" class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4">Öğrenimi Aktif Devam Eden Full-Stack Teknolojileri</h4>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-amber-500/5 dark:bg-amber-500/10 border border-amber-300/50 text-gray-700 dark:text-amber-200 rounded-xl text-sm font-semibold flex items-center gap-2">🌐 React.js <span class="tech-sub-react">(Bileşen Tabanlı Mimari)</span></span>
+                    <span class="px-4 py-2 bg-amber-500/5 dark:bg-amber-500/10 border border-amber-300/50 text-gray-700 dark:text-amber-200 rounded-xl text-sm font-semibold flex items-center gap-2">🟢 Node.js <span class="tech-sub-node">(Arka Plan & API Servisleri)</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-16">
+        <h2 id="proj-title" class="font-outfit text-3xl sm:text-4xl font-black text-center mb-4">Seçme Başyapıtlar</h2>
+        <p id="proj-subtitle" class="text-center text-gray-500 dark:text-gray-400 mb-10 max-w-md mx-auto text-sm">Görsel önizlemeli kart yapısıyla zenrichleştirilmiş canlı arayüzler.</p>
+
+        <div class="flex justify-center gap-2 mb-12 flex-wrap">
+            <button id="filter-all" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-pudra-accent text-white shadow-sm transition-all duration-300" onclick="filterProjects('all', this)">HEPSİ</button>
+            <button id="filter-creative" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('creative', this)">KONSEPT & TASARIM</button>
+            <button id="filter-business" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('business', this)">İŞLETME & VİTRİN</button>
+            <button id="filter-webapp" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('webapp', this)">UYGULAMALAR</button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8" id="projectGrid">
+            
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/1.jpeg" alt="Moon Light Web" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-blue-100 dark:bg-blue-950/40 text-blue-500 font-extrabold px-1.5 md:px-2 py-0.5 rounded">HTML / CSS</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#01</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Moon Light Web</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-1">Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/Moon-Light/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-1">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/2.jpeg" alt="Candle" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-purple-100 dark:bg-purple-950/40 text-purple-500 font-extrabold px-1.5 md:px-2 py-0.5 rounded">CREATIVE UI</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#02</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Candle Concept</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-2">Gece modunun mistik ve estetik dokusunu ön plana çıkaran sanatsal bir ön yüz çalışması.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/candle/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-2">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/44.jpeg" alt="DarktutsuShop" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-amber-100 dark:bg-amber-950/40 text-amber-600 font-extrabold px-1.5 md:px-2 py-0.5 rounded">E-COMMERCE UI</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#03</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Dark Tütsü Shop</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-3">Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/DarktutsuShop/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-3">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/3.jpeg" alt="Pizza Restoran" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-orange-100 dark:bg-orange-950/40 text-orange-600 font-extrabold px-1.5 md:px-2 py-0.5 rounded">TAILWIND</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#05</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Pizza House Landing</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-5">İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/pizzac-/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-5">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/7.jpeg" alt="Hamburger Restoran" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-yellow-100 dark:bg-yellow-950/40 text-yellow-600 font-extrabold px-1.5 md:px-2 py-0.5 rounded">FAST FOOD</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#06</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Burger Station</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-6">Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/hamburgerci/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-6">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/55.jpeg" alt="Waffle Dükkanı" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-pink-100 dark:bg-pink-950/40 text-pink-600 font-extrabold px-1.5 md:px-2 py-0.5 rounded">SWEET UI</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#07</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Waffle Lab Showcase</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-7">Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/waffel/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-7">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/5.jpeg" alt="Kahve Dükkanı" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-3 md:p-6">
+                        <div class="flex justify-between items-start mb-2 md:mb-4">
+                            <span class="text-[9px] md:text-[10px] bg-amber-200 dark:bg-amber-950/40 text-amber-800 font-extrabold px-1.5 md:px-2 py-0.5 rounded">COFFEE ART</span>
+                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#08</span>
+                        </div>
+                        <h3 class="font-outfit text-sm md:text-lg font-black mb-1 md:mb-2 text-gray-900 dark:text-white">Kahveci No:1</h3>
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed card-desc-8">Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.</p>
+                    </div>
+                </div>
+                <div class="px-3 pb-3 md:px-6 md:pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/kahveci1/" target="_blank" class="flex items-center gap-2 text-[11px] md:text-xs font-bold text-pudra-accent group card-btn-8">İNCELE <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-16 text-center">
+        <h2 id="contact-title" class="font-outfit text-3xl font-black mb-2">Benimle İletişime Geçin</h2>
+        <p id="contact-subtitle" class="text-gray-500 dark:text-gray-400 mb-8 text-sm">Fikirlerinizi koda dökmek veya kahve içmek için tüm kanallardan açığım.</p>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a href="mailto:merveayliz2301@gmail.com" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="mail" class="text-pudra-accent w-6 h-6 block"></i>
+                <span class="text-xs font-bold block mt-1">E-Posta</span>
+            </a>
+            <a href="https://github.com/merveayliz" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="github" class="text-pudra-accent w-6 h-6 block"></i>
+                <span class="text-xs font-bold block mt-1">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="linkedin" class="text-pudra-accent w-6 h-6 block"></i>
+                <span class="text-xs font-bold block mt-1">LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/ayliz.dev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="instagram" class="text-pudra-accent w-6 h-6 block"></i>
+                <span class="text-xs font-bold block mt-1">Ayliz.dev</span>
+            </a>
+            <a href="https://www.instagram.com/developerayliz?igsh=eWZrYnY2b2U5OGVu" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="user" class="text-pudra-accent w-6 h-6 block"></i>
+                <span id="label-personal-ig" class="text-xs font-bold block mt-1">Kişisel IG</span>
+            </a>
+            <a href="https://www.etsy.com/shop/AylizDev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
+                <i data-lucide="shopping-bag" class="text-pudra-accent w-6 h-6 block"></i>
+                <span class="text-xs font-bold block mt-1">Etsy Shop</span>
+            </a>
+        </div>
+    </section>
+
+
+    <div class="fixed bottom-2 right-4 z-40 pointer-events-none select-none flex items-end gap-1 opacity-90">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmszdnNvdXU3OHVjZzJnbThyeGhvMG90NjFkcXpjdXBtNms1bW5uOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/33OrjzUFwkwEg/giphy.gif" alt="Cat 1" class="w-12 h-12 object-contain">
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzZ6aDlrOHpvY3o1d3JvY25jcG9jd2x0Z3hwcTF0NzJ5OXZ2NXpubyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gSQp32H82WETR5EFO6/giphy.gif" alt="Cat 2" class="w-10 h-10 object-contain -scale-x-100">
+    </div>
+
+
+    <div class="magic-cursor" id="magicCursor"></div>
+
+
+    <footer class="py-8 text-center text-xs text-gray-400 border-t border-gray-200/30 dark:border-gray-800/30">
+        by <b class="text-gray-600 dark:text-gray-300">Ayliz Designer</b> | <span id="footer-text">© 2026 Tutkuyla ve Parıltıyla Kodlandı.</span>
+    </footer>
+
+
+    <script>
+        const translations = {
+            tr: {
+                navAbout: "Ben Kimim?", navTech: "Yetenekler", navProjects: "Projeler", navContact: "İletişim",
+                heroBadge: "Web Developer & UI/UX Designer",
+                heroTitle: "Fikirden Koda,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Dijital Sanat.</span>",
+                heroDesc: "Ben <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. Tasarımın estetiğini web teknolojileriyle buluşturuyorum. AI entegrasyonu og modern araçlarla dinamik kullanıcı deneyimleri kurgularken, gelişim yolculuğumu her gün LinkedIn'de toplulukla paylaşıyorum.",
+                btnViewProjects: "PROJELERİ İNCELE", btnContactMe: "BANA ULAŞIN",
+                techTitle: "Teknoloji & Yetenek Matrisi", techSubtitle: "Uyguladığım standartlar, diller ve aktif olarak uzmanlaştığım güncel yapılar.",
+                techSec1: "Arayüz Standartları & Şablon Yapıları", techSec2: "Hakim Olunan Programlama Dilleri", techSec3: "Öğrenimi Aktif Devam Eden Full-Stack Teknolojileri",
+                techSubHtml: "(İşaretleme Standartları)", techSubCss: "(Görsel Stil Mimarisi)", techSubTw: "(Atomik Stil Yönetimi)", techUiux: "🎨 UI/UX Dizayn & Prototipleme",
+                techSubJs: "(ES6+ İleri Seviye Mantık)", techSubPhp: "(Dinamik Sunucu Yönetimi)", badgeLearning: "Geliştiriliyor",
+                techSubReact: "(Bileşen Tabanlı Mimari)", techSubNode: "(Arka Plan & API Servisleri)",
+                projTitle: "Seçme Başyapıtlar", projSubtitle: "Görsel önizlemeli kart yapısıyla zenginleştirilmiş canlı arayüzler.",
+                filterAll: "HEPSİ", filterCreative: "KONSEPT & TASARIM", filterBusiness: "İŞLETME & VİTRİN", filterWebapp: "UYGULAMALAR",
+                contactTitle: "Benimle İletişime Geçin", contactSubtitle: "Fikirlerinizi koda dökmek veya kahve içmek için tüm kanallardan açığım.",
+                labelPersonalIg: "Kişisel IG", footerText: "© 2026 Tutkuyla ve Parıltıyla Kodlandı.",
+                cardDesc1: "Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.",
+                cardDesc2: "Gece modunun mistik ve estetik dokusunu ön plana çıkaran sanatsal bir ön yüz çalışması.",
+                cardDesc3: "Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.",
+                cardDesc4: "Hızlı ve akıcı menü listelemesine sahip, yerel restoranlar için optimize vitrin şablonu.",
+                cardDesc5: "İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.",
+                cardDesc6: "Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.",
+                cardDesc7: "Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.",
+                cardDesc8: "Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.",
+                examine: "İNCELE"
+            },
+            en: {
+                navAbout: "About Me", navTech: "Skills", navProjects: "Projects", navContact: "Contact",
+                heroBadge: "Web Developer & UI/UX Designer",
+                heroTitle: "From Idea to Code,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Digital Art.</span>",
+                heroDesc: "I am <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. I blend design aesthetics with web technologies. While building dynamic user experiences with AI integration and modern tools, I share my daily growth journey on LinkedIn.",
+                btnViewProjects: "VIEW PROJECTS", btnContactMe: "CONTACT ME",
+                techTitle: "Technology & Skill Matrix", techSubtitle: "Standards, languages, and modern stacks I actively use and specialize in.",
+                techSec1: "Interface Standards & Layout Structures", techSec2: "Mastered Programming Languages", techSec3: "Active Full-Stack Learning Path",
+                techSubHtml: "(Markup Standards)", techSubCss: "(Visual Style Architecture)", techSubTw: "(Atomic Style Management)", techUiux: "🎨 UI/UX Design & Prototyping",
+                techSubJs: "(ES6+ Advanced Logic)", techSubPhp: "(Dynamic Server Management)", badgeLearning: "Learning",
+                techSubReact: "(Component-Based Architecture)", techSubNode: "(Backend & API Services)",
+                projTitle: "Selected Masterpieces", projSubtitle: "Live user interfaces enriched with image-previewed card layouts.",
+                filterAll: "ALL", filterCreative: "CONCEPT & DESIGN", filterBusiness: "BUSINESS & SHOWCASE", filterWebapp: "WEB APPS",
+                contactTitle: "Get In Touch", contactSubtitle: "I am open to all channels to turn your ideas into code or just grab a coffee.",
+                labelPersonalIg: "Personal IG", footerText: "© 2026 Coded with Passion and Glow.",
+                cardDesc1: "The upgraded version of the Moonlight concept containing alternative modern navigation elements.",
+                cardDesc2: "An artistic frontend study highlighting the mystical and aesthetic texture of dark mode.",
+                cardDesc3: "A dark theme e-commerce showcase designed for niche stores selling unique and mystical products.",
+                cardDesc4: "A showcase template optimized for local restaurants with a fast and fluid menu listing.",
+                cardDesc5: "An order-oriented single-page restaurant theme designed with an appetizing color palette.",
+                cardDesc6: "A modern template presenting large gourmet visuals and price lists with a clean hierarchy.",
+                cardDesc7: "A modern showcase prepared with soft lines and vivid boxes for sweet and boutique cafes.",
+                cardDesc8: "A minimalist coffee menu with calming earth tones for third-generation coffee shops.",
+                examine: "VIEW"
+            },
+            de: {
+                navAbout: "Über mich", navTech: "Fähigkeiten", navProjects: "Projekte", navContact: "Kontakt",
+                heroBadge: "Webentwickler & UI/UX Designer",
+                heroTitle: "Von der Idee zum Code,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Digitale Kunst.</span>",
+                heroDesc: "Ich bin <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. Ich verbinde Designästhetik mit Webtechnologien. Während ich dynamische Benutzererfahrungen aufbaue, teile ich meine Reise auf LinkedIn.",
+                btnViewProjects: "PROJEKTE SEHEN", btnContactMe: "KONTAKTIERE MICH",
+                techTitle: "Technologie- & Kompetenzmatrix", techSubtitle: "Standards, Sprachen und moderne Frameworks, auf die ich mich spezialisiere.",
+                techSec1: "Schnittstellenstandards & Layoutstrukturen", techSec2: "Beherrschte Programmiersprachen", techSec3: "Aktiver Full-Stack-Lernpfad",
+                techSubHtml: "(Auszeichnungsstandards)", techSubCss: "(Visuelle Stilarchitektur)", techSubTw: "(Atomares Stilmanagement)", techUiux: "🎨 UI/UX Design & Prototyping",
+                techSubJs: "(ES6+ Fortgeschrittene Logik)", techSubPhp: "(Dynamische Serververwaltung)", badgeLearning: "Lernen",
+                techSubReact: "(Komponentenbasierte Architektur)", techSubNode: "(Backend & API-Dienste)",
+                projTitle: "Ausgewählte Meisterwerke", projSubtitle: "Live-Benutzeroberflächen, angereichert mit kartenbasierten Bildvorschauen.",
+                filterAll: "ALLE", filterCreative: "KONZEPT & DESIGN", filterBusiness: "BUSINESS & SHOWCASE", filterWebapp: "WEB-APPS",
+                contactTitle: "Kontaktieren Sie mich", contactSubtitle: "Ich bin offen für alle Kanäle, um Ihre Ideen in Code umzusetzen.",
+                labelPersonalIg: "Persönliches IG", footerText: "© 2026 Mit Leidenschaft und Glanz codiert.",
+                cardDesc1: "Die aktualisierte Version des Moonlight-Konzepts mit alternativen Navigationselementen.",
+                cardDesc2: "Eine künstlerische Frontend-Studie, die die mystische Textur des Dark Mode hervorragt.",
+                cardDesc3: "Ein E-Commerce-Showcase für Nischengeschäfte, die mystische Produkte verkaufen.",
+                cardDesc4: "Eine für lokale Restaurants optimierte Showcase-Vorlage mit schneller Menüauflistung.",
+                cardDesc5: "Ein bestellorientiertes, einseitiges Restaurant-Thema mit appetitlicher Farbpalette.",
+                cardDesc6: "Eine moderne Vorlage, die große Gourmet-Bilder mit einer klaren Hierarchie präsentiert.",
+                cardDesc7: "Ein modernes Schaufenster mit weichen Linien und lebendigen Boxen für süße Cafés.",
+                cardDesc8: "Ein minimalistisches Kaffeemenü mit beruhigenden Erdtönen für Cafés der dritten Generation.",
+                examine: "ANSCHAUEN"
+            },
+            ko: {
+                navAbout: "소개", navTech: "기술", navProjects: "프로젝트", navContact: "연락처",
+                heroBadge: "웹 개발자 & UI/UX 디자이너",
+                heroTitle: "아이디어에서 코드로,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>디지털 아트.</span>",
+                heroDesc: "안녕하세요, <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>입니다. 디자인의 미학과 웹 기술을 결합합니다. AI 통합 및 현대적 도구로 동적 UX를 구축하며, 매일 LinkedIn에 성장 과정을 공유하고 있습니다.",
+                btnViewProjects: "프로젝트 보기", btnContactMe: "문의하기",
+                techTitle: "기술 및 역량 매트릭스", techSubtitle: "현재 전문적으로 다루고 적용 중인 표준, 언어 및 아키텍처입니다.",
+                techSec1: "인터페이스 표준 및 레이아웃 구조", techSec2: "마스터한 프로그래밍 언어", techSec3: "현재 학습 중인 풀스택 기술",
+                techSubHtml: "(마크업 표준)", techSubCss: "(시각적 스타일 아키텍처)", techSubTw: "(원자적 스타일 관리)", techUiux: "🎨 UI/UX 디자인 & 프로토타이핑",
+                techSubJs: "(ES6+ 고급 논리)", techSubPhp: "(동적 서버 관리)", badgeLearning: "학습 중",
+                techSubReact: "(컴포넌트 기반 아키텍처)", techSubNode: "(백엔드 & API 서비스)",
+                projTitle: "엄선된 프로젝트", projSubtitle: "이미지 미리보기가 포함된 카드 구조의 라이브 인터페이스입니다.",
+                filterAll: "전체보기", filterCreative: "컨셉 & 디자인", filterBusiness: "비즈니스 & 쇼케이스", filterWebapp: "웹 앱",
+                contactTitle: "저와 연락하기", contactSubtitle: "아이디어를 코드로 구현하거나 가볍게 커피 한잔하기 위한 모든 채널이 열려 있습니다.",
+                labelPersonalIg: "개인 IG", footerText: "© 2026 열정과 빛으로 코딩되었습니다.",
+                cardDesc1: "대안적인 현대식 네비게이션 요소를 포함한 Moonlight 컨셉의 업그레이드 버전.",
+                cardDesc2: "다크 모드의 신비롭고 미학적인 질감을 강조한 예술적인 프론트엔드 연구.",
+                cardDesc3: "독특하고 신비로운 상품을 판매하는 니치 마켓을 위한 다크 테마 이커머스 쇼케이스.",
+                cardDesc4: "빠르고 유연한 메뉴 목록을 갖춘 로컬 레스토랑 전용 쇼케이스 템플릿.",
+                cardDesc5: "식욕을 돋우는 컬러 팔레트와 카드 구조로 디자인된 주문 지향형 싱글 페이지 테마.",
+                cardDesc6: "깔끔한 계층 구조로 대형 고메 비주얼과 가격표를 제공하는 모던 템플릿.",
+                cardDesc7: "디저트 및 부티크 카페를 위해 부드러운 라인과 생생한 박스로 준비된 쇼케이스.",
+                cardDesc8: "3세대 커피숍을 위한 차분한 어스 톤의 미니멀한 커피 메뉴.",
+                examine: "보기"
+            }
+        };
+
+        function applyLanguage(lang) {
+            const dictionary = translations[lang] || translations['tr'];
+            
+            try {
+                document.getElementById('nav-about').innerText = dictionary.navAbout || '';
+                document.getElementById('nav-tech').innerText = dictionary.navTech || '';
+                document.getElementById('nav-projects').innerText = dictionary.navProjects || '';
+                document.getElementById('nav-contact').innerText = dictionary.navContact || '';
+                
+                document.getElementById('mobile-nav-about').innerText = dictionary.navAbout || '';
+                document.getElementById('mobile-nav-tech').innerText = dictionary.navTech || '';
+                document.getElementById('mobile-nav-projects').innerText = dictionary.navProjects || '';
+                document.getElementById('mobile-nav-contact').innerText = dictionary.navContact || '';
+
+                document.getElementById('hero-badge').innerText = dictionary.heroBadge || '';
+                document.getElementById('hero-title').innerHTML = dictionary.heroTitle || '';
+                document.getElementById('hero-desc').innerHTML = dictionary.heroDesc || '';
+                document.getElementById('btn-view-projects').innerText = dictionary.btnViewProjects || '';
+                document.getElementById('btn-contact-me').innerText = dictionary.btnContactMe || '';
+                
+                document.getElementById('tech-title').innerText = dictionary.techTitle || '';
+                document.getElementById('tech-subtitle').innerText = dictionary.techSubtitle || '';
+                document.getElementById('tech-sec1').innerText = dictionary.techSec1 || '';
+                document.getElementById('tech-sec2').innerText = dictionary.techSec2 || '';
+                document.getElementById('tech-sec3').innerText = dictionary.techSec3 || '';
+                document.getElementById('tech-uiux').innerHTML = dictionary.techUiux || '';
+                document.getElementById('badge-learning').innerText = dictionary.badgeLearning || '';
+                
+                document.getElementById('proj-title').innerText = dictionary.projTitle || '';
+                document.getElementById('proj-subtitle').innerText = dictionary.projSubtitle || '';
+                document.getElementById('filter-all').innerText = dictionary.filterAll || '';
+                document.getElementById('filter-creative').innerText = dictionary.filterCreative || '';
+                document.getElementById('filter-business').innerText = dictionary.filterBusiness || '';
+                document.getElementById('filter-webapp').innerText = dictionary.filterWebapp || '';
+                
+                document.getElementById('contact-title').innerText = dictionary.contactTitle || '';
+                document.getElementById('contact-subtitle').innerText = dictionary.contactSubtitle || '';
+                document.getElementById('label-personal-ig').innerText = dictionary.labelPersonalIg || '';
+                document.getElementById('footer-text').innerText = dictionary.footerText || '';
+
+                if(document.querySelector('.tech-sub-html')) document.querySelector('.tech-sub-html').innerText = dictionary.techSubHtml || '';
+                if(document.querySelector('.tech-sub-css')) document.querySelector('.tech-sub-css').innerText = dictionary.techSubCss || '';
+                if(document.querySelector('.tech-sub-tw')) document.querySelector('.tech-sub-tw').innerText = dictionary.techSubTw || '';
+                if(document.querySelector('.tech-sub-js')) document.querySelector('.tech-sub-js').innerText = dictionary.techSubJs || '';
+                if(document.querySelector('.tech-sub-php')) document.querySelector('.tech-sub-php').innerText = dictionary.techSubPhp || '';
+                if(document.querySelector('.tech-sub-react')) document.querySelector('.tech-sub-react').innerText = dictionary.techSubReact || '';
+                if(document.querySelector('.tech-sub-node')) document.querySelector('.tech-sub-node').innerText = dictionary.techSubNode || '';
+
+                for (let i = 1; i <= 8; i++) {
+                    const descElem = document.querySelector(`.card-desc-${i}`);
+                    const btnElem = document.querySelector(`.card-btn-${i}`);
+                    if (descElem && dictionary[`cardDesc${i}`]) {
+                        descElem.innerText = dictionary[`cardDesc${i}`];
+                    }
+                    if (btnElem && dictionary.examine) {
+                        btnElem.innerHTML = `${dictionary.examine} <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i>`;
+                    }
+                }
+            } catch (error) {
+                console.error("Dil çeviri işleminde bir hata oluştu, ancak sistem devam ediyor:", error);
+            }
+            
+            lucide.createIcons();
+        }
+
+        function selectLanguage(lang) {
+            localStorage.setItem('selectedLang', lang);
+            applyLanguage(lang);
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.classList.add('-translate-y-full', 'opacity-0');
+                setTimeout(() => { splash.style.display = 'none'; }, 1000);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            localStorage.removeItem('selectedLang'); 
+            
+            applyLanguage('tr'); 
+            
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.style.display = 'flex';
+                splash.classList.remove('-translate-y-full', 'opacity-0');
+            }
+            
+            lucide.createIcons();
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const btnIcon = document.getElementById('mobile-menu-btn').querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                btnIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                btnIcon.setAttribute('data-lucide', 'menu');
+            }
+            
+            lucide.createIcons();
+        }
+
+        document.querySelectorAll('.onerror-fallback').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                this.parentElement.className += " bg-gradient-to-br from-pudra via-pudra-dark to-pudra-accent flex items-center justify-center text-white text-xs font-bold tracking-widest uppercase";
+                this.parentElement.innerText = "PREVIEW";
+            };
+        });
+
+        const cursor = document.getElementById('magicCursor');
+        window.addEventListener('mousemove', (e) => {
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+            if (Math.random() < 0.15) { createBubble(e.clientX, e.clientY); }
+        });
+
+        function createBubble(x, y) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            const size = Math.random() * 8 + 6 + 'px';
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = x + 'px';
+            bubble.style.top = y + 'px';
+            document.body.appendChild(bubble);
+            setTimeout(() => { bubble.remove(); }, 1200);
+        }
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            const icon = document.getElementById('theme-icon');
+            if(icon) icon.innerText = '🌙';
+        } else {
+            document.documentElement.classList.remove('dark');
+            const icon = document.getElementById('theme-icon');
+            if(icon) icon.innerText = '☀️';
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                if(icon) icon.innerText = '☀️';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                if(icon) icon.innerText = '🌙';
+            }
+        }
+
+        function filterProjects(category, btnElement) {
+            const cards = document.querySelectorAll('.card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-pudra-accent', 'text-white');
+                btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
+            });
+            
+            btnElement.classList.add('bg-pudra-accent', 'text-white');
+            btnElement.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

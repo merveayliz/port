@@ -1,42 +1,33 @@
-# 🌸 Ayliz.dev | Front-End Developer & UI Designer Portfolio
-
+🌸 Ayliz.dev | Front-End Developer & UI Designer Portfolio
 Bu proje; modern tasarım trendlerini, çok dilli içerik yönetimini ve dinamik kullanıcı deneyimlerini tek bir çatı altında toplayan kişisel portfolyo ve dijital ürün vitrini web sitesidir. Geliştirme sürecimi her gün toplulukla paylaştığım "Building in Public" yolculuğumun ana merkezidir.
 
----
+✨ Öne Çıkan Özellikler
+🌍 4 Farklı Dil Desteği: Splash screen (açılış ekranı) üzerinde entegre edilmiş, yerel depolama (localStorage) ve dinamik DOM manipülasyonu destekli Türkçe, İngilizce, Almanca ve Korece dil matrisi.
 
-## ✨ Öne Çıkan Özellikler
+🌓 Gelişmiş Dark Mode: Kullanıcı tercihlerine göre optimize edilen, sistem teması algılama özellikli ve geçişleri yumuşatılmış gece/gündüz modu arayüzü.
 
-* **🌍 4 Farklı Dil Desteği:** Splash screen (açılış ekranı) üzerinde entegre edilmiş, yerel depolama (`localStorage`) ve dinamik DOM manipülasyonu destekli **Türkçe, İngilizce, Almanca ve Korece** dil matrisi.
-* **🌓 Gelişmiş Dark Mode:** Kullanıcı tercihlerine göre optimize edilen, sistem teması algılama özellikli ve geçişleri yumuşatılmış gece/güz modu arayüzü.
-* **📱 Tam Responsive (Mobil Uyumlu) Yapı:** Mobil cihazlardan geniş masaüstü ekranlara kadar kusursuz deneyim sağlayan Tailwind tabanlı esnek grid yerleşimleri.
-* **🎨 İnteraktif Kullanıcı Deneyimi:** 
-  * Özel tasarlanmış, sayfada gezinirken baloncuk efektleri çıkaran kalpli/patili dinamik `magic-cursor` takibi.
-  * Sayfa alt yapısında konumlandırılmış neşeli, dinamik kedi animasyonları.
-  * Lucide simgeleri ile güçlendirilmiş minimal ve şık buton tasarımları.
-* **📂 Dinamik Proje Filtreleme:** Canlı projeleri kategorilerine göre anında süzebilen JavaScript filtreleme altyapısı.
+📱 Tam Responsive (Mobil Uyumlu) Yapı: Mobil cihazlardan geniş masaüstü ekranlara kadar kusursuz deneyim sağlayan Tailwind tabanlı esnek grid yerleşimleri.
 
----
+🎨 İnteraktif Kullanıcı Deneyimi:
 
-## 🛠️ Kullanılan Teknolojiler ve Standartlar
+Özel tasarlanmış, sayfada gezinirken baloncuk efektleri çıkaran kalpli/patili dinamik magic-cursor takibi.
 
-* **HTML5** - Semantik yapı ve SEO uyumlu etiket yönetimi.
-* **Tailwind CSS** - Özelleştirilmiş renk paletleri ve atomik stil mimarisi.
-* **JavaScript (ES6+)** - Çoklu dil sözlük yönetimi, asenkron DOM güncellemeleri ve yerel depolama yönetimi.
-* **Lucide Icons** - Modern ve performans dostu vektörel simge kütüphanesi.
-* **Google Fonts** - Tipografik hiyerarşi için *Outfit* ve *Plus Jakarta Sans* kombinasyonu.
+Sayfa alt yapısında konumlandırılmış neşeli, dinamik kedi animasyonları.
 
----
+Lucide simgeleri ile güçlendirilmiş minimal ve şık buton tasarımları.
 
-## 📸 Canlı Önizleme
+📂 Dinamik Proje Filtreleme: Canlı projeleri kategorilerine göre anında süzebilen JavaScript filtreleme altyapısı.
 
-🔗 **Canlı Site:** [https://merveayliz.github.io/port/](https://merveayliz.github.io/port/)
+🛠️ Kullanılan Teknolojiler ve Standartlar
+HTML5 - Semantik yapı ve SEO uyumlu etiket yönetimi.
 
----
+Tailwind CSS - Özelleştirilmiş renk paletleri ve atomik stil mimarisi.
 
-## 🚀 Proje Kurulumu ve Yerelde Çalıştırma
+JavaScript (ES6+) - Çoklu dil sözlük yönetimi, asenkron DOM güncellemeleri ve yerel depolama yönetimi.
 
-Projeyi bilgisayarınızda incelemek veya üzerinde geliştirmeler yapmak için:
+Lucide Icons - Modern ve performans dostu vektörel simge kütüphanesi.
 
-1. Bu depoyu yerel makinenize klonlayın:
-```bash
-git clone [https://github.com/merveayliz/port.git](https://github.com/merveayliz/port.git)
+Google Fonts - Tipografik hiyerarşi için Outfit ve Plus Jakarta Sans kombinasyonu.
+
+📸 Ekran Görüntüleri & Önizleme
+Canlı Önizleme Adresi: https://merveayliz.github.io/port/

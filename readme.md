@@ -2,6 +2,7 @@
 
 > A sleek, highly interactive, multi-language portfolio and digital showcase built with modern web standards and responsive layout architectures. This platform serves as the central hub for my daily **#BuildingInPublic** journey.
 
+
 [![Live Demo](https://img.shields.io/badge/Live_Demo-ayliz.dev-ff69b4?style=for-the-badge&logo=githubpages&logoColor=white)](https://merveayliz.github.io/port/)
 [![GitHub](https://img.shields.io/badge/GitHub-merveayliz-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/merveayliz)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Ayliz_Azaklı-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ayliz-azaklı-74579b318/)

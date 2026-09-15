@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayliz.dev | Front-End Developer & UI Designer</title>
-
-    <link rel="icon" type="image/png" href="img/x-icon.png" />
+    <!-- 8. satırdaki eski link etiketini silip bunu yapıştırın -->
+<link rel="icon" type="image/png" href="img/x-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
@@ -86,6 +86,29 @@
         }
         
         .hidden { display: none !important; }
+
+        .notebook-grid {
+          background-color: #ffffff;
+          background-image: 
+            linear-gradient(to right, rgba(236, 72, 153, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(236, 72, 153, 0.08) 1px, transparent 1px);
+          background-size: 16px 16px;
+        }
+        .dark .notebook-grid {
+          background-color: #18181b;
+          background-image: 
+            linear-gradient(to right, rgba(219, 39, 119, 0.12) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(219, 39, 119, 0.12) 1px, transparent 1px);
+          background-size: 16px 16px;
+        }
+        
+        @keyframes popIn {
+          0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+          100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .animate-pop-in {
+          animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
 
     </style>
 </head>
@@ -221,6 +244,7 @@
 
     <section id="projects" class="max-w-7xl mx-auto px-6 py-16">
         
+        <!-- YENİ BİLGİ SEKSİYONU: Çalışma Koşulları, Kapora ve Yayın Özellikleri -->
         <div class="mb-12 bg-white/60 dark:bg-[#121214]/60 border border-pudra-accent/30 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-sm">
             <h3 class="font-outfit text-xl md:text-2xl font-black mb-3 text-gray-900 dark:text-white flex items-center gap-2">
                 ✨ Kişiye Özel Web Tasarım & Hizmet Şartları
@@ -244,7 +268,7 @@
                     <span class="p-2 bg-pudra-accent/20 text-pudra-accent rounded-xl font-bold">03</span>
                     <div>
                         <b class="font-semibold text-gray-900 dark:text-white block mb-1">Esnek Domain Seçenekleri</b>
-                        İster <i>isletmeisminiz.vercel.app</i> adresiyle statik vitrin sitenize ücretsiz sahip olun, ister size özel domain (.com vb.) kurulumu ile profesyonelleşin.
+                          size özel domain (.com vb.) kurulumu ile profesyonelleşin.
                     </div>
                 </div>
             </div>
@@ -260,9 +284,9 @@
             <button id="filter-webapp" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('webapp', this)">UYGULAMALAR</button>
         </div>
 
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projectGrid">
             
+            <!-- KART 1 -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -281,7 +305,7 @@
                             <div class="text-gray-600 dark:text-gray-300">✨ Basit, ürün odaklı vitrin site</div>
                             <div class="text-gray-600 dark:text-gray-300">📱 WhatsApp üzerinden hızlı sipariş imkanı</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımları</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 <i>isletmeisminiz.vercel.app</i> (Ücretsiz) veya Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -290,6 +314,7 @@
                 </div>
             </article>
 
+            <!-- KART 2 -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -308,7 +333,7 @@
                             <div class="text-gray-600 dark:text-gray-300">✨ Ürün odaklı minimalist arayüz</div>
                             <div class="text-gray-600 dark:text-gray-300">📱 Doğrudan WhatsApp sipariş yönlendirmesi</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Kargolarınız için sticker / teşekkür kartı tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 <i>isletmeisminiz.vercel.app</i> (Ücretsiz) veya Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -317,6 +342,7 @@
                 </div>
             </article>
 
+            <!-- KART 3 -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -335,7 +361,7 @@
                             <div class="text-gray-600 dark:text-gray-300">✨ Şık ürün listeleme paneli</div>
                             <div class="text-gray-600 dark:text-gray-300">📱 Hızlı WhatsApp sipariş butonu</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Markanıza özel sticker & teşekkür kartı tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 <i> Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -344,6 +370,7 @@
                 </div>
             </article>
 
+            <!-- KART 4 (Eski 5 - Pizza) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -372,6 +399,7 @@
                 </div>
             </article>
 
+            <!-- KART 5 (Eski 6 - Burger) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -391,7 +419,7 @@
                             <div class="text-gray-600 dark:text-gray-300">🍔 Trendyol Yemek & Yemeksepeti direkt link bağlantısı</div>
                             <div class="text-gray-600 dark:text-gray-300">🗺️ Google Maps & Apple Maps yönlendirmesi</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeniz için QR kodlu kartvizit tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -400,6 +428,7 @@
                 </div>
             </article>
 
+            <!-- KART 6 (Eski 7 - Waffle) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -419,7 +448,7 @@
                             <div class="text-gray-600 dark:text-gray-300">🍓 Yemeksepeti & Trendyol Yemek Entegrasyonu</div>
                             <div class="text-gray-600 dark:text-gray-300">📍 Google Maps / Apple Maps Bağlantıları</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kartvizit tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -427,6 +456,8 @@
                     <a href="https://merveayliz.github.io/waffel/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-7">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
+
+            <!-- KART 7 (Eski 8 - Kahveci) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -446,7 +477,7 @@
                             <div class="text-gray-600 dark:text-gray-300">🛵 Dijital paket servis platformlarına bağlantı</div>
                             <div class="text-gray-600 dark:text-gray-300">📍 Tam uyumlu Google/Apple harita entegrasyonu</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmenize özel QR Kodlu Kartvizit</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -455,6 +486,7 @@
                 </div>
             </article>
 
+            <!-- KART 8 (YENİ - Curly Design) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -474,7 +506,7 @@
                             <div class="text-gray-600 dark:text-gray-300">💳 Kapora & IBAN bilgisi ile otomatize ödeme adımı</div>
                             <div class="text-gray-600 dark:text-gray-300">📩 Ödeme sonrası Otomatik WhatsApp Sipariş Mesajı</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -483,6 +515,7 @@
                 </div>
             </article>
 
+            <!-- KART 9 (YENİ - Nail Art 2) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -502,7 +535,7 @@
                             <div class="text-gray-600 dark:text-gray-300">📅 Online Randevu Formu + Opsiyonel Çift Dil Desteği</div>
                             <div class="text-gray-600 dark:text-gray-300">📍 Harita (Maps) & İletişim Entegrasyonu</div>
                             <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR Kodlu Kartvizit</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
@@ -511,7 +544,7 @@
                 </div>
             </article>
 
-            
+            <!-- KART 10 (YENİ - Nail Art 1) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -540,6 +573,7 @@
                 </div>
             </article>
 
+            <!-- KART 11 (YENİ - Organizasyon 2) -->
             <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
@@ -568,36 +602,6 @@
                 </div>
             </article>
 
-            <!-- Yoga Studio Card -->
-<article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
-    <div>
-        <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-            <img src="img/13.png" alt="Yoga Studio" class="w-full h-full object-cover onerror-fallback">
-        </div>
-        <div class="p-4 md:p-6">
-            <div class="flex justify-between items-start mb-2">
-                <span class="text-[9px] md:text-[10px] bg-amber-100 dark:bg-amber-950/40 text-amber-600 font-extrabold px-2 py-0.5 rounded">YOGA & WELLNESS UI</span>
-                <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#04</span>
-            </div>
-            <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Prana Yoga Studio</h3>
-            <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-3">Yoga, pilates ve wellness stüdyoları için özel olarak tasarlanmış modern, huzurlu ve şık arayüz tasarımı.</p>
-            
-            <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                <div class="font-bold text-pudra-accent text-sm">Fiyat: 8.000 TL</div>
-                <div class="text-gray-600 dark:text-gray-300">✨ Şık ders ve etkinlik listeleme paneli</div>
-                <div class="text-gray-600 dark:text-gray-300">📱 Hızlı WhatsApp randevu & bilgi butonu</div>
-                <div class="text-gray-600 dark:text-gray-300">🔄 3 kez ücretsiz revize hakkı</div>
-                <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Markanıza özel kartvizit tasarımı</div>
-                <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
-            </div>
-        </div>
-    </div>
-    <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-        <a href="https://merveayliz.github.io/yoga/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-3">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
-    </div>
-</article>
-
-            
         </div>
     </section>
 
@@ -635,11 +639,61 @@
     </section>
 
 
-    <div class="fixed bottom-2 right-4 z-40 pointer-events-none select-none flex items-end gap-1 opacity-90">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmszdnNvdXU3OHVjZzJnbThyeGhvMG90NjFkcXpjdXBtNms1bW5uOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/33OrjzUFwkwEg/giphy.gif" alt="Cat 1" class="w-12 h-12 object-contain">
-        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzZ6aDlrOHpvY3o1d3JvY25jcG9jd2x0Z3hwcTF0NzJ5OXZ2NXpubyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gSQp32H82WETR5EFO6/giphy.gif" alt="Cat 2" class="w-10 h-10 object-contain -scale-x-100">
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end group">
+  
+  <div class="mb-2 mr-1 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-2xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center gap-1.5">
+    <span>Soru sorabilirsin!</span> 🐾
+  </div>
+
+  <button onclick="toggleMiuwChat()" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-pink-400 via-purple-400 to-pink-500 p-0.5 shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center">
+    <div class="w-full h-full bg-white dark:bg-gray-900 rounded-full p-1 flex items-center justify-center overflow-hidden relative">
+    
+      <img src="img/cat-avatar.png"  alt="Miuw AI" class="w-full h-full object-cover rounded-full">
+    </div>
+    
+    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white dark:border-gray-900 rounded-full"></span>
+  </button>
+
+  <div id="miuw-chat-window" class="hidden absolute bottom-20 right-0 w-[90vw] sm:w-96 h-[500px] bg-white dark:bg-gray-900 border border-pink-200 dark:border-purple-900/50 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-pop-in">
+    
+    
+<div class="p-3 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 text-white flex items-center justify-between shadow-sm">
+  <div class="flex items-center gap-2.5">
+    
+    <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full p-0.5 flex-shrink-0">
+      <img src="img/cat-avatar.png"  alt="Miuw" class="w-full h-full object-cover rounded-full">
+    </div>
+    <div>
+      <h3 class="font-outfit font-black text-base flex items-center gap-1 leading-tight">Miuw <span class="text-xs font-normal opacity-90">AI</span></h3>
+      <p class="text-[10px] text-pink-100 leading-tight">Sana nasıl yardımcı olabilirim? 🐾</p>
+    </div>
+  </div>
+  <button onclick="toggleMiuwChat()" class="p-1 hover:bg-white/20 rounded-full transition-colors">
+    <i data-lucide="x" class="w-5 h-5"></i>
+  </button>
+</div>
+
+
+    <div id="miuw-messages" class="flex-1 p-4 overflow-y-auto space-y-3 notebook-grid">
+   
+      <div class="flex items-start gap-2">
+        <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
+        <div class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200/60 dark:border-purple-800/40 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
+          Miyav! Ben Ayliz.dev'in akıllı kedisi **Miuw**! Sitemiz, teslimat süreçlerimiz veya fiyatlarımız hakkında ne öğrenmek istersin? ✨
+        </div>
+      </div>
     </div>
 
+    <div class="p-3 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex gap-2 items-center">
+      <input type="text" id="miuw-input" onkeypress="handleMiuwKeyPress(event)" placeholder="Miuw'a soru sor..." class="flex-1 text-xs px-4 py-2.5 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full border border-pink-200 dark:border-purple-900 focus:outline-none focus:border-pink-400">
+      <button onclick="sendMiuwMessage()" class="p-2.5 bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-full hover:opacity-90 active:scale-95 transition-all">
+        <i data-lucide="send" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+  </div>
+
+</div>
 
     <div class="magic-cursor" id="magicCursor"></div>
 
@@ -674,11 +728,6 @@
                 cardDesc6: "Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.",
                 cardDesc7: "Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.",
                 cardDesc8: "Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.",
-                cardDesc9: "Butik nişan, kına ve hediye ürünleri için özel sipariş, SSS ve konfigüratör altyapılı vitrin.", 
-                cardDesc10: "Kaş, kirpik ve tırnak uygulaması yapan güzellik salonları için randevu odaklı web çözümü.", 
-                cardDesc11: "Sadece tırnak ve protez tırnak stüdyolarına özel zarif, dinamik ve estetik tanıtım şablonu.", 
-                cardDesc12: "Düğün, kına, lansman ve özel etkinlik ajansları için yüksek çözünürlüklü konsept sergileme sitesi.", 
-                cardDesc13: "Yoga, pilates ve wellness stüdyoları için özel olarak tasarlanmış modern, huzurlu ve şık arayüz tasarımı.", 
                 examine: "İNCELE"
             },
             en: {
@@ -704,11 +753,6 @@
                 cardDesc6: "A modern template presenting large gourmet visuals and price lists with a clean hierarchy.",
                 cardDesc7: "A modern showcase prepared with soft lines and vivid boxes for sweet and boutique cafes.",
                 cardDesc8: "A minimalist coffee menu with calming earth tones for third-generation coffee shops.",
-                cardDesc9: "A boutique showcase with custom orders, FAQs, and configurator infrastructure for engagement and gift products.",
-                cardDesc10: "An appointment-oriented web solution for beauty salons specializing in brows, lashes, and nails.",
-                cardDesc11: "An elegant, dynamic, and aesthetic showcase template dedicated exclusively to nail and press-on studios.",
-                cardDesc12: "A high-resolution concept showcase website for wedding, engagement, launch, and event agencies.",
-                cardDesc13: "A modern, serene, and stylish interface design specifically crafted for yoga, pilates, and wellness studios.",
                 examine: "VIEW"
             },
             de: {
@@ -734,11 +778,6 @@
                 cardDesc6: "Eine moderne Vorlage, die große Gourmet-Bilder mit einer klaren Hierarchie präsentiert.",
                 cardDesc7: "Ein modernes Schaufenster mit weichen Linien und lebendigen Boxen für süße Cafés.",
                 cardDesc8: "Ein minimalistisches Kaffeemenü mit beruhigenden Erdtönen für Cafés der dritten Generation.",
-                cardDesc9: "Ein Boutique-Schaufenster mit Sonderanfertigungen, FAQs und Konfigurator für Verlobungs- und Geschenkartikel.",
-                cardDesc10: "Eine terminorientierte Weblösung für Schönheitsstudios, die auf Augenbrauen, Wimpern und Nägel spezialisiert sind.",
-                cardDesc11: "Eine elegante, dynamische und ästhetische Präsentationsvorlage speziell für Nagelstudios.",
-                cardDesc12: "Eine hochauflösende Konzept-Showcase-Website für Hochzeits-, Event- und Veranstaltungsagenturen.",
-                cardDesc13: "Ein modernes, ruhiges und stilvolles Interface-Design speziell für Yoga-, Pilates- und Wellness-Studios.",
                 examine: "ANSCHAUEN"
             },
             ko: {
@@ -764,11 +803,6 @@
                 cardDesc6: "깔끔한 계층 구조로 대형 고메 비주얼과 가격표를 제공하는 모던 템플릿.",
                 cardDesc7: "디저트 및 부티크 카페를 위해 부드러운 라인과 생생한 박스로 준비된 쇼케이스.",
                 cardDesc8: "3세대 커피숍을 위한 차분한 어스 톤의 미니멀한 커피 메뉴.",
-                cardDesc9: "맞춤 주문, FAQ 및 컨피규레이터 인프라를 갖춘 스몰 웨딩, 약혼 and 답례품 전용 쇼케이스.",
-                cardDesc10: "속눈썹, 눈썹 및 네일 숍을 위한 예약 중심의 웹 솔루션.",
-                cardDesc11: "네일 및 네일아트 전문 스튜디오를 위한 우아하고 동적인 맞춤형 홍보 템플릿.",
-                cardDesc12: "웨딩, 파티, 이벤트 대행사를 위한 고해상도 컨셉 쇼케이스 웹사이트.",
-                cardDesc13: "요가, 필라테스 및 웰니스 스튜디오를 위해 특별히 설계된 현대적이고 평온한 인터페이스 Design.",
                 examine: "보기"
             }
         };
@@ -950,6 +984,114 @@
                 }
             });
         }
+        
+function toggleMiuwChat() {
+  const chatWin = document.getElementById('miuw-chat-window');
+  chatWin.classList.toggle('hidden');
+  lucide.createIcons();
+}
+
+
+function handleMiuwKeyPress(e) {
+  if (e.key === 'Enter') sendMiuwMessage();
+}
+
+
+function sendMiuwMessage() {
+  const input = document.getElementById('miuw-input');
+  const messageText = input.value.trim();
+  if (!messageText) return;
+
+  const messagesContainer = document.getElementById('miuw-messages');
+
+  
+  const userBubble = `
+    <div class="flex items-end justify-end gap-2">
+      <div class="max-w-[80%] bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs p-3 rounded-2xl rounded-tr-none shadow-sm">
+        ${escapeHtml(messageText)}
+      </div>
+    </div>
+  `;
+  messagesContainer.innerHTML += userBubble;
+  input.value = '';
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  
+  setTimeout(() => {
+    const aiResponse = getMiuwResponse(messageText);
+    const aiBubble = `
+      <div class="flex items-start gap-2">
+        <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
+        <div class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200/60 dark:border-purple-800/40 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
+          ${aiResponse}
+        </div>
+      </div>
+    `;
+    messagesContainer.innerHTML += aiBubble;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }, 500);
+}
+
+
+function escapeHtml(text) {
+  return text.replace(/[&<>"']/g, function(m) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+  });
+}
+
+
+function getMiuwResponse(input) {
+  const text = input.toLowerCase();
+
+  // 1. Merve Ayliz Kimdir?
+  if (text.includes('kimdir') || text.includes('ayliz kim') || text.includes('merve kim')) {
+    return "Merve Ayliz, web tasarımı ve UI/UX geliştirmeyi dijital sanata dönüştüren bir Front-End Developer ve tasarım öğrencisidir! 🎨✨";
+  }
+
+  // 2. Web Sitesi Hazırlık Süresi Kaç Gün?
+  if (text.includes('süre') || text.includes('kaç gün') || text.includes('teslimat') || text.includes('zamanda')) {
+    return "Kişiye özel web projelerimiz yoğunluğa bağlı olarak **5 - 7 iş günü** içerisinde tamamlanıp yayına hazır hale getirilir! 🚀";
+  }
+
+  // 3. Fiyatlar Nedir?
+  if (text.includes('fiyat') || text.includes('ücret') || text.includes('kaç para') || text.includes('maliyet')) {
+    return "Hazır konsept vitrin sitelerimiz **4.000 TL**'den, çoklu dil ve entegrasyon içeren restoran/kafe sitelerimiz **9.000 TL**'den başlamaktadır! 🏷️";
+  }
+
+  // 4. Ödeme Şartları ve Kapora Zorunlu mu?
+  if (text.includes('ödeme') || text.includes('kapora') || text.includes('güven') || text.includes('şart')) {
+    return "Proje başlangıcında iş onayı için kapora alınır. Web siteniz tam istediğiniz gibi tasarlanıp onayınızı aldıktan sonra kalan ödeme gerçekleşir! 💳";
+  }
+
+
+  // 6. Projelerin Yanında Hediye Var mı?
+  if (text.includes('hediye') || text.includes('kartvizit') || text.includes('sticker')) {
+    return "Evet! Tüm projelerimizde işletmenize özel **QR kodlu kartvizit** veya kargolarınız için **özel sticker & teşekkür kartı tasarımları** hediye edilmektedir! 🎁";
+  }
+
+  // 7. Hangi Teknolojiler Kullanılıyor?
+  if (text.includes('teknoloji') || text.includes('kod') || text.includes('yetenek') || text.includes('dil')) {
+    return "Projelerimizde HTML5, CSS3, Tailwind CSS, JavaScript (ES6+) ve PHP standartları kullanılmakta; güncel olarak React.js ve Node.js geliştirilmektedir! 💻";
+  }
+
+  // 8. İletişim Kanalları
+  if (text.includes('iletişim') || text.includes('ulaş') || text.includes('mail') || text.includes('instagram')) {
+    return "Bize sayfanın altındaki İletişim bölümünden, Instagram (**@ayliz.dev**) veya doğrudan E-Posta (**merveayliz2301@gmail.com**) üzerinden ulaşabilirsiniz! 📩";
+  }
+
+  // 9. Özel Müşteri / Konsept Tasarım Yapılıyor mu?
+  if (text.includes('özel') || text.includes('sıfırdan') || text.includes('istek') || text.includes('farklı')) {
+    return "Kesinlikle! İşletmenizin ruhuna, renk konseptine ve hedeflerine tamamen özel çözümler tasarlıyoruz. 🌸";
+  }
+
+  // 10. Selamlama / Teşekkür / Kedi Şakası
+  if (text.includes('merhaba') || text.includes('selam') || text.includes('miu') || text.includes('miyav')) {
+    return "Miyavvv! 🐾 Hoş geldin! Harika bir web sitesi hayalin için buradayım, bana dilediğini sorabilirsin!";
+  }
+
+  // Varsayılan Yanıt
+  return "Miyav! Bu sorunun detayları için doğrudan Merve Ayliz ile **İletişim** bölümünden veya Instagram'dan iletişime geçebilirsin! 🐾✨";
+}
     </script>
 </body>
 </html>

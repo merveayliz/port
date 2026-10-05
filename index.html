@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayliz.dev | Front-End Developer & UI Designer</title>
+   
     <link rel="icon" type="image/png" href="img/x-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-
       tailwind.config = {
         darkMode: 'class',
         theme: {
@@ -30,11 +31,9 @@
           }
         }
       }
-
     </script>
 
     <style>
-
         .magic-cursor {
             position: fixed;
             pointer-events: none;
@@ -44,7 +43,6 @@
             transform: translate(-50%, -50%);
             transition: transform 0.08s ease-out;
         }
-
         .magic-cursor::before,
         .magic-cursor::after {
             content: "";
@@ -55,13 +53,11 @@
             border-radius: 12px 12px 0 0;
             background: #FF8A8A;
         }
-
         .magic-cursor::before {
             left: 12px;
             transform: rotate(-45deg);
             transform-origin: 0 100%;
         }
-
         .magic-cursor::after {
             left: 0;
             transform: rotate(45deg);
@@ -72,18 +68,16 @@
             position: fixed;
             pointer-events: none;
             border-radius: 50%;
-            background: rgba(56, 189, 248, 0.6);
+            background: rgba(255, 138, 138, 0.6);
             animation: floatUp 1.2s ease-out forwards;
             z-index: 9999;
         }
-
         @keyframes floatUp {
             0% { transform: translateY(0) scale(0.5); opacity: 1; }
             100% { transform: translateY(-80px) scale(1.3); opacity: 0; }
         }
-        
-        .hidden { display: none !important; }
 
+        .hidden { display: none !important; }
         .notebook-grid {
           background-color: #ffffff;
           background-image: 
@@ -98,821 +92,832 @@
             linear-gradient(to bottom, rgba(219, 39, 119, 0.12) 1px, transparent 1px);
           background-size: 16px 16px;
         }
-        
         @keyframes popIn {
           0% { transform: scale(0.8) translateY(20px); opacity: 0; }
           100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-        .animate-pop-in {
-          animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
+        .animate-pop-in { animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
     </style>
 </head>
 
-
 <body class="bg-pudra-light dark:bg-[#0B0B0C] text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 overflow-x-hidden">
 
+    <!-- DİL SEÇİM SPLASH EKRANI -->
     <div id="splash-screen" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-pudra-light via-pudra to-pudra-dark transition-all duration-1000 ease-in-out">
         <div class="text-center mb-12 animate-pulse">
-            <h2 class="font-outfit text-5xl lg:text-7xl font-black text-gray-800 tracking-widest drop-shadow-[0_4px_10px_rgba(255,138,138,0.5)]">
+            <h2 class="font-outfit text-5xl lg:text-7xl font-black text-gray-800 tracking-widest">
                 AYLİZ<span class="text-pudra-accent">.DEV</span>
             </h2>
             <p class="text-gray-600 mt-3 font-semibold text-xs lg:text-sm uppercase tracking-widest">Select Language / Dil Seçin / 언어 선택</p>
         </div>
-
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 max-w-3xl w-full">
-            <button onclick="selectLanguage('tr')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
-                <span class="text-3xl mb-2">🇹🇷</span>
-                <span class="font-bold text-sm text-gray-700 group-hover:text-white">Türkçe</span>
+            <button onclick="selectLanguage('tr')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-md hover:scale-105 hover:bg-pudra-accent hover:text-white transition-all group">
+                <span class="text-3xl mb-2">🇹🇷</span><span class="font-bold text-sm text-gray-700 group-hover:text-white">Türkçe</span>
             </button>
-            <button onclick="selectLanguage('en')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
-                <span class="text-3xl mb-2">🇬🇧</span>
-                <span class="font-bold text-sm text-gray-700 group-hover:text-white">English</span>
+            <button onclick="selectLanguage('en')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-md hover:scale-105 hover:bg-pudra-accent hover:text-white transition-all group">
+                <span class="text-3xl mb-2">🇬🇧</span><span class="font-bold text-sm text-gray-700 group-hover:text-white">English</span>
             </button>
-            <button onclick="selectLanguage('de')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
-                <span class="text-3xl mb-2">🇩🇪</span>
-                <span class="font-bold text-sm text-gray-700 group-hover:text-white">Deutsch</span>
+            <button onclick="selectLanguage('de')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-md hover:scale-105 hover:bg-pudra-accent hover:text-white transition-all group">
+                <span class="text-3xl mb-2">🇩🇪</span><span class="font-bold text-sm text-gray-700 group-hover:text-white">Deutsch</span>
             </button>
-            <button onclick="selectLanguage('ko')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md border border-white/50 rounded-2xl shadow-md transition-all duration-300 hover:scale-105 hover:bg-pudra-accent hover:text-white active:scale-95 group">
-                <span class="text-3xl mb-2">🇰🇷</span>
-                <span class="font-bold text-sm text-gray-700 group-hover:text-white">한국어</span>
+            <button onclick="selectLanguage('ko')" class="flex flex-col items-center justify-center p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-md hover:scale-105 hover:bg-pudra-accent hover:text-white transition-all group">
+                <span class="text-3xl mb-2">🇰🇷</span><span class="font-bold text-sm text-gray-700 group-hover:text-white">한국어</span>
             </button>
         </div>
     </div>
 
-
-    <nav class="sticky top-0 z-50 w-full bg-white/70 dark:bg-[#0B0B0C]/70 backdrop-blur-xl border-b border-gray-200/40 dark:border-gray-800/40 transition-colors duration-300">
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 w-full bg-white/70 dark:bg-[#0B0B0C]/70 backdrop-blur-xl border-b border-gray-200/40 dark:border-gray-800/40">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
-            
             <div class="font-outfit font-black text-2xl tracking-wider text-gray-800 dark:text-white">
                 AYLİZ<span class="text-pudra-accent">.DEV</span>
             </div>
-
             <div class="hidden md:flex items-center gap-6">
-                <a href="#about" id="nav-about" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Ben Kimim?</a>
-                <a href="#tech-stack" id="nav-tech" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Yetenekler</a>
-                <a href="#projects" id="nav-projects" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">Projeler</a>
-                <a href="#contact" id="nav-contact" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent dark:hover:text-pudra-accent transition-colors">İletişim</a>
+                <a href="#about" id="nav-about" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent transition-colors">Ben Kimim?</a>
+                <a href="#projects" id="nav-projects" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent transition-colors">Projeler</a>
+                <a href="#contact" id="nav-contact" class="text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-pudra-accent transition-colors">İletişim</a>
             </div>
-
-            <div class="flex items-center gap-3 md:gap-6">
-                <button onclick="toggleDarkMode()" class="p-2.5 rounded-full bg-gray-100/80 dark:bg-gray-800/80 hover:scale-110 active:scale-95 transition-all duration-300" id="theme-btn">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleDarkMode()" class="p-2.5 rounded-full bg-gray-100/80 dark:bg-gray-800/80 hover:scale-110 transition-all" id="theme-btn">
                     <span class="text-lg" id="theme-icon">☀️</span>
                 </button>
-
-                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:scale-105 active:scale-95 transition-all duration-300 md:hidden text-gray-700 dark:text-gray-300" id="mobile-menu-btn" aria-label="Menu">
+                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 md:hidden text-gray-700 dark:text-gray-300" id="mobile-menu-btn">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
-
-            <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/95 dark:bg-[#0B0B0C]/95 backdrop-blur-2xl border-b border-gray-200/50 dark:border-gray-800/50 flex flex-col p-6 gap-4 shadow-xl md:hidden animate-fadeIn">
-                <a href="#about" id="mobile-nav-about" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Ben Kimim?</a>
-                <a href="#tech-stack" id="mobile-nav-tech" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Yetenekler</a>
-                <a href="#projects" id="mobile-nav-projects" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">Projeler</a>
-                <a href="#contact" id="mobile-nav-contact" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200 hover:text-pudra-accent py-2 transition-colors">İletişim</a>
+            <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/95 dark:bg-[#0B0B0C]/95 backdrop-blur-2xl border-b border-gray-200/50 dark:border-gray-800/50 flex flex-col p-6 gap-4 shadow-xl md:hidden">
+                <a href="#about" id="mobile-nav-about" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200">Ben Kimim?</a>
+                <a href="#projects" id="mobile-nav-projects" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200">Projeler</a>
+                <a href="#contact" id="mobile-nav-contact" onclick="toggleMobileMenu()" class="text-base font-bold text-gray-700 dark:text-gray-200">İletişim</a>
             </div>
         </div>
     </nav>
 
-
+    <!-- HERO SECTION -->
     <section id="about" class="max-w-6xl mx-auto px-6 py-16 lg:py-24">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            
             <div class="w-full lg:w-2/5 flex justify-center">
-                <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2rem] overflow-hidden group shadow-[0_20px_50px_rgba(255,138,138,0.2)] dark:shadow-none border-4 border-white dark:border-gray-800">
+                <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2rem] overflow-hidden group shadow-[0_20px_50px_rgba(255,138,138,0.2)] border-4 border-white dark:border-gray-800">
                     <img src="img/w.jpeg" alt="Merve Ayliz" class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-pudra-accent/30 to-transparent"></div>
                 </div>
             </div>
-
             <div class="w-full lg:w-3/5 text-center lg:text-left">
-                <span id="hero-badge" class="inline-block px-4 py-1.5 bg-pudra/80 dark:bg-pudra-accent/10 text-pudra-accent font-bold text-xs rounded-full uppercase tracking-widest mb-4">Web Developer & UI/UX Designer</span>
+                <span id="hero-badge" class="inline-block px-4 py-1.5 bg-pudra/80 dark:bg-pudra-accent/10 text-pudra-accent font-bold text-xs rounded-full uppercase tracking-widest mb-4">Web Tasarım & Kodlama Öğrencisi</span>
                 <h1 id="hero-title" class="font-outfit text-4xl sm:text-5xl font-black text-gray-900 dark:text-white leading-tight mb-6">
-                    Fikirden Koda,<br><span class="bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent">Dijital Sanat.</span>
+                    Öğreniyor, Üretiyor &<br><span class="bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-transparent">Kodla Sanat Yapıyorum.</span>
                 </h1>
                 <p id="hero-desc" class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-light">
-                    Ben <b class="font-semibold text-gray-900 dark:text-white">Merve Ayliz</b>. Tasarımın estetiğini web teknolojileriyle buluşturuyorum. AI entegrasyonu ve modern araçlarla dinamik kullanıcı deneyimleri kurgularken, gelişim yolculuğumu her gün LinkedIn'de toplulukla paylaşıyorum.
+                    Ben <b class="font-semibold text-gray-900 dark:text-white">Merve Ayliz</b>. Web tasarım ve kodlama alanında öğrenciyim. Her gün yapay zeka (AI) araçlarından destek alarak kendimi geliştiriyor, öğrendiklerimi pratik projeye dönüştürüyor ve bu yolculuğu her gün LinkedIn'de paylaşıyorum. 🌸
                 </p>
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#projects" id="btn-view-projects" class="px-8 py-3.5 bg-pudra-accent text-white font-bold text-sm rounded-full shadow-lg shadow-pudra-accent/30 hover:scale-105 hover:shadow-xl hover:shadow-pudra-accent/40 active:scale-95 transition-all duration-300">PROJELERİ İNCELE</a>
-                    <a href="#contact" id="btn-contact-me" class="px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold text-sm rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300">BANA ULAŞIN</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <section id="tech-stack" class="max-w-6xl mx-auto px-6 py-12">
-        <h3 id="tech-title" class="font-outfit text-2xl font-black text-center mb-2 tracking-wide">Teknoloji & Yetenek Matrisi</h3>
-        <p id="tech-subtitle" class="text-center text-xs text-gray-400 dark:text-gray-500 mb-10">Uyguladığım standartlar, diller ve aktif olarak uzmanlaştığım güncel yapılar.</p>
-        
-        <div class="space-y-8">
-            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md">
-                <h4 id="tech-sec1" class="text-xs font-black uppercase tracking-widest text-pudra-accent mb-4">Arayüz Standartları & Şablon Yapıları</h4>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-orange-500">HTML5</b> <span class="tech-sub-html">(İşaretleme Standartları)</span></span>
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-blue-500">CSS3</b> <span class="tech-sub-css">(Görsel Stil Mimarisi)</span></span>
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-teal-500">Tailwind CSS</b> <span class="tech-sub-tw">(Atomik Stil Yönetimi)</span></span>
-                    <span id="tech-uiux" class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2">🎨 UI/UX Dizayn & Prototipleme</span>
-                </div>
-            </div>
-
-            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md">
-                <h4 id="tech-sec2" class="text-xs font-black uppercase tracking-widest text-blue-500 mb-4">Hakim Olunan Programlama Dilleri</h4>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-yellow-500">JavaScript</b> <span class="tech-sub-js">(ES6+ İleri Seviye Mantık)</span></span>
-                    <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-xl text-sm font-semibold shadow-sm border border-gray-100 dark:border-gray-700/50 flex items-center gap-2"><b class="text-indigo-500">PHP</b> <span class="tech-sub-php">(Dinamik Sunucu Yönetimi)</span></span>
-                </div>
-            </div>
-
-            <div class="bg-white/40 dark:bg-gray-800/20 border border-gray-200/50 dark:border-gray-700/40 p-6 rounded-3xl backdrop-blur-md relative overflow-hidden">
-                <div id="badge-learning" class="absolute top-0 right-0 bg-amber-500 text-white font-bold text-[9px] uppercase px-3 py-1 rounded-bl-xl tracking-wider animate-pulse">Geliştiriliyor</div>
-                <h4 id="tech-sec3" class="text-xs font-black uppercase tracking-widest text-amber-500 mb-4">Öğrenimi Aktif Devam Eden Full-Stack Teknolojileri</h4>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 bg-amber-500/5 dark:bg-amber-500/10 border border-amber-300/50 text-gray-700 dark:text-amber-200 rounded-xl text-sm font-semibold flex items-center gap-2">🌐 React.js <span class="tech-sub-react">(Bileşen Tabanlı Mimari)</span></span>
-                    <span class="px-4 py-2 bg-amber-500/5 dark:bg-amber-500/10 border border-amber-300/50 text-gray-700 dark:text-amber-200 rounded-xl text-sm font-semibold flex items-center gap-2">🟢 Node.js <span class="tech-sub-node">(Arka Plan & API Servisleri)</span></span>
+                    <a href="#projects" id="btn-view-projects" class="px-8 py-3.5 bg-pudra-accent text-white font-bold text-sm rounded-full shadow-lg shadow-pudra-accent/30 hover:scale-105 transition-all">PROJELERİ İNCELE</a>
+                    <a href="#contact" id="btn-contact-me" class="px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-bold text-sm rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-50 transition-all">BANA ULAŞIN</a>
                 </div>
             </div>
         </div>
     </section>
 
-
+    <!-- PROJELER SECTION -->
     <section id="projects" class="max-w-7xl mx-auto px-6 py-16">
         
-        <!-- YENİ BİLGİ SEKSİYONU: Çalışma Koşulları, Kapora ve Yayın Özellikleri -->
         <div class="mb-12 bg-white/60 dark:bg-[#121214]/60 border border-pudra-accent/30 rounded-3xl p-6 md:p-8 backdrop-blur-md shadow-sm">
-            <h3 class="font-outfit text-xl md:text-2xl font-black mb-3 text-gray-900 dark:text-white flex items-center gap-2">
+            <h3 id="terms-title" class="font-outfit text-xl md:text-2xl font-black mb-3 text-gray-900 dark:text-white flex items-center gap-2">
                 ✨ Kişiye Özel Web Tasarım & Hizmet Şartları
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs md:text-sm text-gray-600 dark:text-gray-300 font-light">
                 <div class="flex items-start gap-3">
                     <span class="p-2 bg-pudra-accent/20 text-pudra-accent rounded-xl font-bold">01</span>
-                    <div>
-                        <b class="font-semibold text-gray-900 dark:text-white block mb-1">Kişiye Özel & Hızlı Teslimat</b>
-                        Tüm projeler işletmenizin ruhuna uygun şekilde sıfırdan tasarlanır. Yoğunluğa göre web siteniz <b>5 - 7 gün</b> içerisinde yayına hazır hale getirilir.
-                    </div>
+                    <div id="term-1"><b class="font-semibold text-gray-900 dark:text-white block mb-1">Kişiye Özel & Hızlı Teslimat</b>Tüm projeler işletmenizin ruhuna uygun olarak sıfırdan tasarlanır. Yoğunluğa göre web siteniz <b>5 - 7 gün</b> içerisinde yayına hazır hale getirilir.</div>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="p-2 bg-pudra-accent/20 text-pudra-accent rounded-xl font-bold">02</span>
-                    <div>
-                        <b class="font-semibold text-gray-900 dark:text-white block mb-1">Güvenli Çalışma Mantığı</b>
-                        İş başlangıcında kapora ödemesi alınır. Projeniz tam istediğiniz gibi tamamlanıp onayınızı aldıktan sonra kalan ödeme gerçekleşir.
-                    </div>
+                    <div id="term-2"><b class="font-semibold text-gray-900 dark:text-white block mb-1">Güvenli Çalışma Mantığı</b>İş başlangıcında kapora ödemesi alınır. Projeniz tam istediğiniz gibi tamamlanıp onayınızı aldıktan sonra kalan ödeme gerçekleşir.</div>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="p-2 bg-pudra-accent/20 text-pudra-accent rounded-xl font-bold">03</span>
-                    <div>
-                        <b class="font-semibold text-gray-900 dark:text-white block mb-1">Esnek Domain Seçenekleri</b>
-                          size özel domain (.com vb.) kurulumu ile profesyonelleşin.
-                    </div>
+                    <div id="term-3"><b class="font-semibold text-gray-900 dark:text-white block mb-1">Esnek Domain Seçenekleri</b>Size özel domain (.com vb.) kurulumu ile profesyonelleşin.</div>
                 </div>
             </div>
         </div>
 
-        <h2 id="proj-title" class="font-outfit text-3xl sm:text-4xl font-black text-center mb-4">Seçme Başyapıtlar</h2>
-        <p id="proj-subtitle" class="text-center text-gray-500 dark:text-gray-400 mb-10 max-w-md mx-auto text-sm">Görsel önizlemeli kart yapısıyla zenginleştirilmiş canlı arayüzler.</p>
+        <h2 id="proj-title" class="font-outfit text-3xl sm:text-4xl font-black text-center mb-4">Seçme Projeler & Şablonlar</h2>
+        <p id="proj-subtitle" class="text-center text-gray-500 dark:text-gray-400 mb-10 max-w-md mx-auto text-sm">Görsel önizlemeli kart yapısıyla hazırladığım canlı arayüzler.</p>
 
+        <!-- Filtre Butonları -->
         <div class="flex justify-center gap-2 mb-12 flex-wrap">
-            <button id="filter-all" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-pudra-accent text-white shadow-sm transition-all duration-300" onclick="filterProjects('all', this)">HEPSİ</button>
-            <button id="filter-creative" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('creative', this)">KONSEPT & TASARIM</button>
-            <button id="filter-business" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('business', this)">İŞLETME & VİTRİN</button>
-            <button id="filter-webapp" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 hover:bg-pudra-accent hover:text-white" onclick="filterProjects('webapp', this)">UYGULAMALAR</button>
+            <button id="filter-all" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-pudra-accent text-white shadow-sm transition-all" onclick="filterProjects('all', this)">HEPSİ</button>
+            <button id="filter-creative" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 transition-all" onclick="filterProjects('creative', this)">KONSEPT & TASARIM</button>
+            <button id="filter-business" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 transition-all" onclick="filterProjects('business', this)">İŞLETME & VİTRİN</button>
+            <button id="filter-webapp" class="filter-btn px-5 py-2 rounded-full text-xs font-bold bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 transition-all" onclick="filterProjects('webapp', this)">UYGULAMALAR</button>
         </div>
 
+        <!-- Proje Kartları Grid (ID'li Dinamik Yapı) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projectGrid">
             
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
+            <!-- KART 1: Apex Gear -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="webapp">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/1.jpeg" alt="Moon Light Web" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/apex.png" alt="Apex Gear" class="w-full h-full object-cover onerror-fallback" onerror="this.src='img/w.jpeg'">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-blue-100 dark:bg-blue-950/40 text-blue-500 font-extrabold px-2 py-0.5 rounded">HTML / CSS</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#01</span>
+                            <span class="text-[10px] bg-sky-100 dark:bg-sky-950/40 text-sky-500 font-extrabold px-2 py-0.5 rounded">WEB APP / GEAR</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#01</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Moon Light Web</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-1">Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Apex Gear Platform</h3>
+                        <p id="card-desc-1" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Modern ve dinamik teknoloji/ekipman arayüzü ve keşif platformu.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">✨ Basit, ürün odaklı vitrin site</div>
-                            <div class="text-gray-600 dark:text-gray-300">📱 WhatsApp üzerinden hızlı sipariş imkanı</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımları</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-f1-1" class="font-bold text-pudra-accent text-sm">Canlı Web Uygulaması</div>
+                            <div id="card-f2-1" class="text-gray-600 dark:text-gray-300">⚡ Hızlı performans ve modern UI/UX mimarisi</div>
+                            <div id="card-f3-1" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel arayüz optimizasyon desteği</div>
+                            <div id="card-note-1" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Vercel Altyapılı Canlı Yayın</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/Moon-Light/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-1">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://apex-gear-khaki.vercel.app" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="creative">
+            <!-- KART 2: Yoga & Wellness -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="creative">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/yoga.png" alt="Yoga Wellness" class="w-full h-full object-cover onerror-fallback" onerror="this.src='img/w.jpeg'">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] bg-emerald-100 dark:bg-emerald-950/40 text-emerald-500 font-extrabold px-2 py-0.5 rounded">WELLNESS & YOGA</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#02</span>
+                        </div>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Yoga & Wellness Studio</h3>
+                        <p id="card-desc-2" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Huzur veren renkler ve sakinleştirici arayüz ile yoga stüdyosu şablonu.</p>
+                        
+                        <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
+                            <div id="card-price-2" class="font-bold text-pudra-accent text-sm">Fiyat: 8.000 TL</div>
+                            <div id="card-f1-2" class="text-gray-600 dark:text-gray-300">🧘‍♀️ Kurs programları, eğitmenler ve rezervasyon paneli</div>
+                            <div id="card-f2-2" class="text-gray-600 dark:text-gray-300">📱 WhatsApp üzerinden hızlı stüdyo kayıt imkanı</div>
+                            <div id="card-gift-2" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kodlu kartvizit tasarımı</div>
+                            <div id="card-note-2" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/yoga/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <!-- KART 3: Moon Light Web -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="creative">
+                <div>
+                    <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                        <img src="img/1.jpeg" alt="Moon Light" class="w-full h-full object-cover onerror-fallback">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] bg-blue-100 dark:bg-blue-950/40 text-blue-500 font-extrabold px-2 py-0.5 rounded">HTML / CSS</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#03</span>
+                        </div>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Moon Light Web</h3>
+                        <p id="card-desc-3" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.</p>
+                        
+                        <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
+                            <div id="card-price-3" class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
+                            <div id="card-f1-3" class="text-gray-600 dark:text-gray-300">✨ Basit, ürün odaklı vitrin site</div>
+                            <div id="card-f2-3" class="text-gray-600 dark:text-gray-300">📱 WhatsApp üzerinden hızlı sipariş imkanı</div>
+                            <div id="card-gift-3" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımları</div>
+                            <div id="card-note-3" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/Moon-Light/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                </div>
+            </article>
+
+            <!-- KART 4: Candle Concept -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="creative">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
                         <img src="img/2.jpeg" alt="Candle" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-purple-100 dark:bg-purple-950/40 text-purple-500 font-extrabold px-2 py-0.5 rounded">CREATIVE UI</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#02</span>
+                            <span class="text-[10px] bg-purple-100 dark:bg-purple-950/40 text-purple-500 font-extrabold px-2 py-0.5 rounded">CREATIVE UI</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#04</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Candle Concept</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-2">Gece modunun mistik ve estetik dokusunu ön plana çıkararak ürünlerinizi tanıtan sanatsal çalışma.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Candle Concept</h3>
+                        <p id="card-desc-4" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Gece modunun mistik ve estetik dokusunu ön plana çıkararak ürünlerinizi tanıtan sanatsal çalışma.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">✨ Ürün odaklı minimalist arayüz</div>
-                            <div class="text-gray-600 dark:text-gray-300">📱 Doğrudan WhatsApp sipariş yönlendirmesi</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Kargolarınız için sticker / teşekkür kartı tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-4" class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
+                            <div id="card-f1-4" class="text-gray-600 dark:text-gray-300">✨ Ürün odaklı minimalist arayüz</div>
+                            <div id="card-f2-4" class="text-gray-600 dark:text-gray-300">📱 Doğrudan WhatsApp sipariş yönlendirmesi</div>
+                            <div id="card-gift-4" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Kargolarınız için sticker / teşekkür kartı tasarımı</div>
+                            <div id="card-note-4" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/candle/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-2">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/candle/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 5: Dark Tütsü Shop -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
                         <img src="img/44.jpeg" alt="DarktutsuShop" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-amber-100 dark:bg-amber-950/40 text-amber-600 font-extrabold px-2 py-0.5 rounded">E-COMMERCE UI</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#03</span>
+                            <span class="text-[10px] bg-amber-100 dark:bg-amber-950/40 text-amber-600 font-extrabold px-2 py-0.5 rounded">E-COMMERCE UI</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#05</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Dark Tütsü Shop</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-3">Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Dark Tütsü Shop</h3>
+                        <p id="card-desc-5" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">✨ Şık ürün listeleme paneli</div>
-                            <div class="text-gray-600 dark:text-gray-300">📱 Hızlı WhatsApp sipariş butonu</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Markanıza özel sticker & teşekkür kartı tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-5" class="font-bold text-pudra-accent text-sm">Fiyat: 4.000 TL</div>
+                            <div id="card-f1-5" class="text-gray-600 dark:text-gray-300">✨ Şık ürün listeleme paneli</div>
+                            <div id="card-f2-5" class="text-gray-600 dark:text-gray-300">📱 Hızlı WhatsApp sipariş butonu</div>
+                            <div id="card-gift-5" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Markanıza özel sticker & teşekkür kartı tasarımı</div>
+                            <div id="card-note-5" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/DarktutsuShop/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-3">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/DarktutsuShop/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 6: Pizza House -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/3.jpeg" alt="Pizza Restoran" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/3.jpeg" alt="Pizza" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-orange-100 dark:bg-orange-950/40 text-orange-600 font-extrabold px-2 py-0.5 rounded">TAILWIND</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#04</span>
+                            <span class="text-[10px] bg-orange-100 dark:bg-orange-950/40 text-orange-600 font-extrabold px-2 py-0.5 rounded">RESTORAN</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#06</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Pizza House Landing</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-5">İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Pizza House Landing</h3>
+                        <p id="card-desc-6" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">🌐 Çoklu dil desteği (Çift Dil Entegrasyonu)</div>
-                            <div class="text-gray-600 dark:text-gray-300">🛵 Yemeksepeti & Trendyol Yemek dijital dükkan bağlantısı</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Google & Apple Maps konum entegrasyonu</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kodlu kartvizit tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-6" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-6" class="text-gray-600 dark:text-gray-300">🌐 Çoklu dil desteği (Çift Dil Entegrasyonu)</div>
+                            <div id="card-f2-6" class="text-gray-600 dark:text-gray-300">🛵 Yemeksepeti & Trendyol Yemek dijital dükkan bağlantısı</div>
+                            <div id="card-f3-6" class="text-gray-600 dark:text-gray-300">📍 Google & Apple Maps konum entegrasyonu</div>
+                            <div id="card-gift-6" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kodlu kartvizit tasarımı</div>
+                            <div id="card-note-6" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/pizzac-/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-5">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/pizzac-/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 7: Burger Station -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/7.jpeg" alt="Hamburger Restoran" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/7.jpeg" alt="Burger" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-yellow-100 dark:bg-yellow-950/40 text-yellow-600 font-extrabold px-2 py-0.5 rounded">FAST FOOD</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#05</span>
+                            <span class="text-[10px] bg-yellow-100 dark:bg-yellow-950/40 text-yellow-600 font-extrabold px-2 py-0.5 rounded">FAST FOOD</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#07</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Burger Station</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-6">Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Burger Station</h3>
+                        <p id="card-desc-7" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">🌐 Dil Entegrasyonu + WhatsApp Sipariş</div>
-                            <div class="text-gray-600 dark:text-gray-300">🍔 Trendyol Yemek & Yemeksepeti direkt link bağlantısı</div>
-                            <div class="text-gray-600 dark:text-gray-300">🗺️ Google Maps & Apple Maps yönlendirmesi</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeniz için QR kodlu kartvizit tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-7" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-7" class="text-gray-600 dark:text-gray-300">🌐 Dil Entegrasyonu + WhatsApp Sipariş</div>
+                            <div id="card-f2-7" class="text-gray-600 dark:text-gray-300">🍔 Trendyol Yemek & Yemeksepeti direkt link bağlantısı</div>
+                            <div id="card-f3-7" class="text-gray-600 dark:text-gray-300">🗺️ Google Maps & Apple Maps yönlendirmesi</div>
+                            <div id="card-gift-7" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeniz için QR kodlu kartvizit tasarımı</div>
+                            <div id="card-note-7" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/hamburgerci/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-6">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/hamburgerci/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 8: Waffle Lab -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/55.jpeg" alt="Waffle Dükkanı" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/55.jpeg" alt="Waffle" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-pink-100 dark:bg-pink-950/40 text-pink-600 font-extrabold px-2 py-0.5 rounded">SWEET UI</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#06</span>
+                            <span class="text-[10px] bg-pink-100 dark:bg-pink-950/40 text-pink-600 font-extrabold px-2 py-0.5 rounded">SWEET UI</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#08</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Waffle Lab Showcase</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-7">Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Waffle Lab Showcase</h3>
+                        <p id="card-desc-8" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">🌐 2 Farklı Dil Seçeneği + Canlı WhatsApp Siparişi</div>
-                            <div class="text-gray-600 dark:text-gray-300">🍓 Yemeksepeti & Trendyol Yemek Entegrasyonu</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Google Maps / Apple Maps Bağlantıları</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kartvizit tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-8" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-8" class="text-gray-600 dark:text-gray-300">🌐 2 Farklı Dil Seçeneği + Canlı WhatsApp Siparişi</div>
+                            <div id="card-f2-8" class="text-gray-600 dark:text-gray-300">🍓 Yemeksepeti & Trendyol Yemek Entegrasyonu</div>
+                            <div id="card-f3-8" class="text-gray-600 dark:text-gray-300">📍 Google Maps / Apple Maps Bağlantıları</div>
+                            <div id="card-gift-8" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR kartvizit tasarımı</div>
+                            <div id="card-note-8" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/waffel/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-7">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/waffel/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 9: Kahveci No:1 -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/5.jpeg" alt="Kahve Dükkanı" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/5.jpeg" alt="Kahve" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-amber-200 dark:bg-amber-950/40 text-amber-800 font-extrabold px-2 py-0.5 rounded">COFFEE ART</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#07</span>
+                            <span class="text-[10px] bg-amber-200 dark:bg-amber-950/40 text-amber-800 font-extrabold px-2 py-0.5 rounded">COFFEE ART</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#09</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Kahveci No:1</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3 card-desc-8">Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Kahveci No:1</h3>
+                        <p id="card-desc-9" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">☕ Çoklu dil modülü + WhatsApp hızlı sipariş</div>
-                            <div class="text-gray-600 dark:text-gray-300">🛵 Dijital paket servis platformlarına bağlantı</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Tam uyumlu Google/Apple harita entegrasyonu</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmenize özel QR Kodlu Kartvizit</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-9" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-9" class="text-gray-600 dark:text-gray-300">☕ Çoklu dil modülü + WhatsApp hızlı sipariş</div>
+                            <div id="card-f2-9" class="text-gray-600 dark:text-gray-300">🛵 Dijital paket servis platformlarına bağlantı</div>
+                            <div id="card-gift-9" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmenize özel QR Kodlu Kartvizit</div>
+                            <div id="card-note-9" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/kahveci1/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group card-btn-8">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/kahveci1/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 10: Curly Design Studio -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/10.png" alt="Curly Design Studio" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/10.png" alt="Curly Design" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-rose-100 dark:bg-rose-950/40 text-rose-600 font-extrabold px-2 py-0.5 rounded">BUTİK & DÜĞÜN</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#08</span>
+                            <span class="text-[10px] bg-rose-100 dark:bg-rose-950/40 text-rose-600 font-extrabold px-2 py-0.5 rounded">BUTİK & DÜĞÜN</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#10</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Curly Design Studio</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Butik nişan, kına ve hediye ürünleri için özel sipariş, SSS ve konfigüratör altyapılı vitrin.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Curly Design Studio</h3>
+                        <p id="card-desc-10" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Butik nişan, kına ve hediye ürünleri için özel sipariş, SSS ve konfigüratör altyapılı vitrin.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 8.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">🛍️ Ürün detayları, SSS paneli ve Google Maps</div>
-                            <div class="text-gray-600 dark:text-gray-300">💳 Kapora & IBAN bilgisi ile otomatize ödeme adımı</div>
-                            <div class="text-gray-600 dark:text-gray-300">📩 Ödeme sonrası Otomatik WhatsApp Sipariş Mesajı</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-10" class="font-bold text-pudra-accent text-sm">Fiyat: 8.000 TL</div>
+                            <div id="card-f1-10" class="text-gray-600 dark:text-gray-300">🛍️ Ürün detayları, SSS paneli ve Google Maps</div>
+                            <div id="card-f2-10" class="text-gray-600 dark:text-gray-300">📩 Ödeme sonrası Otomatik WhatsApp Sipariş Mesajı</div>
+                            <div id="card-gift-10" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel teşekkür kartı & sticker tasarımı</div>
+                            <div id="card-note-10" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://curlydesign.vercel.app" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://curlydesign.vercel.app" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 11: Kaş & Tırnak Tasarım Studio -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/9.png" alt="Nail & Lash Studio" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/9.png" alt="Nail Studio" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-pink-100 dark:bg-pink-950/40 text-pink-600 font-extrabold px-2 py-0.5 rounded">BEAUTY & SALON</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#09</span>
+                            <span class="text-[10px] bg-pink-100 dark:bg-pink-950/40 text-pink-600 font-extrabold px-2 py-0.5 rounded">BEAUTY</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#11</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Kaş & Tırnak Tasarım Studio</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Kaş, kirpik ve tırnak uygulaması yapan güzellik salonları için randevu odaklı web çözümü.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Kaş & Tırnak Tasarım Studio</h3>
+                        <p id="card-desc-11" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Kaş, kirpik ve tırnak uygulaması yapan güzellik salonları için randevu odaklı web çözümü.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">💅 Fiyat Listesi, Görsel Galeri & SSS Modülü</div>
-                            <div class="text-gray-600 dark:text-gray-300">📅 Online Randevu Formu + Opsiyonel Çift Dil Desteği</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Harita (Maps) & İletişim Entegrasyonu</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR Kodlu Kartvizit</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-11" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-11" class="text-gray-600 dark:text-gray-300">💅 Fiyat Listesi, Görsel Galeri & SSS Modülü</div>
+                            <div id="card-f2-11" class="text-gray-600 dark:text-gray-300">📅 Online Randevu Formu + Harita Entegrasyonu</div>
+                            <div id="card-gift-11" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: İşletmeye özel QR Kodlu Kartvizit</div>
+                            <div id="card-note-11" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/nailart2/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/nailart2/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 12: Nail Art Boutique -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/8.png" alt="Nail Art Studio" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/8.png" alt="Nail Art" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-fuchsia-100 dark:bg-fuchsia-950/40 text-fuchsia-600 font-extrabold px-2 py-0.5 rounded">NAIL STUDIO</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#10</span>
+                            <span class="text-[10px] bg-fuchsia-100 dark:bg-fuchsia-950/40 text-fuchsia-600 font-extrabold px-2 py-0.5 rounded">NAIL STUDIO</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#12</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Nail Art Boutique</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Sadece tırnak ve protez tırnak stüdyolarına özel zarif, dinamik ve estetik tanıtım şablonu.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Nail Art Boutique</h3>
+                        <p id="card-desc-12" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Sadece tırnak ve protez tırnak stüdyolarına özel zarif, dinamik ve estetik tanıtım şablonu.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">✨ Hizmet & Fiyat Tablosu, Canlı Galeri ve SSS</div>
-                            <div class="text-gray-600 dark:text-gray-300">🗓️ Akıllı Randevu Formu & İstek Üzerine 2 Dil</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Google Maps Konum ve WhatsApp Randevu Bağlantısı</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Stüdyonuza özel QR Kodlu Kartvizit</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐  Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-12" class="font-bold text-pudra-accent text-sm">Fiyat: 9.000 TL</div>
+                            <div id="card-f1-12" class="text-gray-600 dark:text-gray-300">✨ Hizmet & Fiyat Tablosu, Canlı Galeri ve SSS</div>
+                            <div id="card-f2-12" class="text-gray-600 dark:text-gray-300">📍 Google Maps Konum ve WhatsApp Randevu Bağlantısı</div>
+                            <div id="card-gift-12" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Stüdyonuza özel QR Kodlu Kartvizit</div>
+                            <div id="card-note-12" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/nailart1/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/nailart1/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
-            
-            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between" data-category="business">
+            <!-- KART 13: Event & Organizasyon -->
+            <article class="card bg-white dark:bg-[#121214] border border-gray-200/60 dark:border-gray-800/60 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between" data-category="business">
                 <div>
                     <div class="aspect-square w-full overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                        <img src="img/12.jpeg" alt="Event & Organization" class="w-full h-full object-cover onerror-fallback">
+                        <img src="img/12.jpeg" alt="Event" class="w-full h-full object-cover onerror-fallback">
                     </div>
-                    <div class="p-4 md:p-6">
+                    <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] md:text-[10px] bg-indigo-100 dark:bg-indigo-950/40 text-indigo-500 font-extrabold px-2 py-0.5 rounded">ORGANİZASYON</span>
-                            <span class="font-outfit text-[10px] md:text-xs font-bold text-gray-300 dark:text-gray-700">#11</span>
+                            <span class="text-[10px] bg-indigo-100 dark:bg-indigo-950/40 text-indigo-500 font-extrabold px-2 py-0.5 rounded">ORGANİZASYON</span>
+                            <span class="font-outfit text-xs font-bold text-gray-400">#13</span>
                         </div>
-                        <h3 class="font-outfit text-base md:text-lg font-black mb-1 text-gray-900 dark:text-white">Event & Organizasyon Showcase</h3>
-                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Düğün, kına, lansman ve özel etkinlik ajansları için yüksek çözünürlüklü konsept sergileme sitesi.</p>
+                        <h3 class="font-outfit text-lg font-black mb-1 text-gray-900 dark:text-white">Event & Organizasyon</h3>
+                        <p id="card-desc-13" class="text-xs text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-3">Düğün, kına, lansman ve özel etkinlik ajansları için yüksek çözünürlüklü konsept sergileme sitesi.</p>
                         
                         <div class="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-1.5 text-xs">
-                            <div class="font-bold text-pudra-accent text-sm">Fiyat: 12.000 TL</div>
-                            <div class="text-gray-600 dark:text-gray-300">🎉 Mobil Uyumlu Premium Etkinlik & Konsept Galerisi</div>
-                            <div class="text-gray-600 dark:text-gray-300">📞 Hızlı İletişim, Fiyat Teklifi ve Talep Formu</div>
-                            <div class="text-gray-600 dark:text-gray-300">📍 Google Maps & WhatsApp Doğrudan İletişim</div>
-                            <div class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel QR Kodlu Lüks Kartvizit Tasarımı</div>
-                            <div class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
+                            <div id="card-price-13" class="font-bold text-pudra-accent text-sm">Fiyat: 12.000 TL</div>
+                            <div id="card-f1-13" class="text-gray-600 dark:text-gray-300">🎉 Mobil Uyumlu Premium Etkinlik & Konsept Galerisi</div>
+                            <div id="card-f2-13" class="text-gray-600 dark:text-gray-300">📞 Hızlı İletişim, Fiyat Teklifi ve Talep Formu</div>
+                            <div id="card-gift-13" class="text-emerald-600 dark:text-emerald-400 font-semibold">🎁 Hediye: Özel QR Kodlu Lüks Kartvizit Tasarımı</div>
+                            <div id="card-note-13" class="text-[10px] text-gray-400 pt-1 border-t border-gray-200 dark:border-gray-700">🌐 Size Özel Domain (Domain ücreti alıcıya aittir)</div>
                         </div>
                     </div>
                 </div>
-                <div class="px-4 pb-4 md:px-6 md:pb-6 mt-auto">
-                    <a href="https://merveayliz.github.io/organizasyon2/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group">İNCELE <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="https://merveayliz.github.io/organizasyon2/" target="_blank" class="flex items-center gap-2 text-xs font-bold text-pudra-accent group"><span class="inspect-text">İNCELE</span> <i data-lucide="external-link" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i></a>
                 </div>
             </article>
 
         </div>
+
+        <!-- UYGULAMALAR SEKMESİ BOŞ DURUM UYARISI -->
+        <div id="no-apps-message" class="hidden text-center py-16 bg-white/40 dark:bg-gray-800/20 rounded-3xl border border-dashed border-gray-300 dark:border-gray-700 mt-6">
+            <p id="no-apps-text" class="text-sm text-gray-500 dark:text-gray-400 font-semibold">✨ Henüz aktif bir web uygulaması eklemedim, yakında harika projelerle burada olacak!</p>
+        </div>
     </section>
 
-
+    <!-- İLETİŞİM SECTION -->
     <section id="contact" class="max-w-4xl mx-auto px-6 py-16 text-center">
         <h2 id="contact-title" class="font-outfit text-3xl font-black mb-2">Benimle İletişime Geçin</h2>
-        <p id="contact-subtitle" class="text-gray-500 dark:text-gray-400 mb-8 text-sm">Fikirlerinizi koda dökmek veya kahve içmek için tüm kanallardan açığım.</p>
+        <p id="contact-subtitle" class="text-gray-500 dark:text-gray-400 mb-8 text-sm">Fikirlerinizi koda dökmek veya projeler hakkında konuşmak için buradayım.</p>
         
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <a href="mailto:merveayliz2301@gmail.com" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="mail" class="text-pudra-accent w-6 h-6 block"></i>
-                <span class="text-xs font-bold block mt-1">E-Posta</span>
+            <a href="mailto:merveayliz2301@gmail.com" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="mail" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">E-Posta</span>
             </a>
-            <a href="https://github.com/merveayliz" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="github" class="text-pudra-accent w-6 h-6 block"></i>
-                <span class="text-xs font-bold block mt-1">GitHub</span>
+            <a href="https://github.com/merveayliz" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="github" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="linkedin" class="text-pudra-accent w-6 h-6 block"></i>
-                <span class="text-xs font-bold block mt-1">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="linkedin" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">LinkedIn</span>
             </a>
-            <a href="https://www.instagram.com/ayliz.dev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="instagram" class="text-pudra-accent w-6 h-6 block"></i>
-                <span class="text-xs font-bold block mt-1">Ayliz.dev</span>
+            <a href="https://www.instagram.com/ayliz.dev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="instagram" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">Ayliz.dev</span>
             </a>
-            <a href="https://www.instagram.com/developerayliz?igsh=eWZrYnY2b2U5OGVu" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="user" class="text-pudra-accent w-6 h-6 block"></i>
-                <span id="label-personal-ig" class="text-xs font-bold block mt-1">Kişisel IG</span>
+            <a href="https://youtube.com/@aylizdev?si=FR_Do00MV-kQWz09" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="youtube" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">YouTube</span>
             </a>
-            <a href="https://www.etsy.com/shop/AylizDev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent dark:hover:border-pudra-accent hover:scale-105 transition-all duration-300">
-                <i data-lucide="shopping-bag" class="text-pudra-accent w-6 h-6 block"></i>
-                <span class="text-xs font-bold block mt-1">Etsy Shop</span>
+            <a href="https://www.etsy.com/shop/AylizDev" target="_blank" class="p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col items-center justify-center text-center gap-2 hover:border-pudra-accent hover:scale-105 transition-all">
+                <i data-lucide="shopping-bag" class="text-pudra-accent w-6 h-6"></i><span class="text-xs font-bold">Etsy Shop</span>
             </a>
         </div>
     </section>
 
+    <!-- MİUW AI SOHBET PENCERESİ -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end group">
+      <div id="miuw-tooltip" class="mb-2 mr-1 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-2xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        Soru sorabilirsin! 🐾
+      </div>
+      <button onclick="toggleMiuwChat()" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-pink-400 via-purple-400 to-pink-500 p-0.5 shadow-xl hover:scale-110 transition-all flex items-center justify-center">
+        <div class="w-full h-full bg-white dark:bg-gray-900 rounded-full p-1 flex items-center justify-center overflow-hidden relative">
+          <img src="img/cat-avatar.png" alt="Miuw AI" class="w-full h-full object-cover rounded-full">
+        </div>
+        <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white dark:border-gray-900 rounded-full"></span>
+      </button>
 
-<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end group">
-  
-  <div class="mb-2 mr-1 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-2xl shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center gap-1.5">
-    <span>Soru sorabilirsin!</span> 🐾
-  </div>
+      <div id="miuw-chat-window" class="hidden absolute bottom-20 right-0 w-[90vw] sm:w-96 h-[500px] bg-white dark:bg-gray-900 border border-pink-200 dark:border-purple-900/50 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-pop-in">
+        <div class="p-3 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 text-white flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-2.5">
+            <div class="w-10 h-10 bg-white/20 rounded-full p-0.5 flex-shrink-0">
+              <img src="img/cat-avatar.png" alt="Miuw" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div>
+              <h3 class="font-outfit font-black text-base flex items-center gap-1">Miuw <span class="text-xs font-normal opacity-90">AI</span></h3>
+              <p id="miuw-sub" class="text-[10px] text-pink-100">Sana nasıl yardımcı olabilirim? 🐾</p>
+            </div>
+          </div>
+          <button onclick="toggleMiuwChat()" class="p-1 hover:bg-white/20 rounded-full"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
 
-  <button onclick="toggleMiuwChat()" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-pink-400 via-purple-400 to-pink-500 p-0.5 shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center">
-    <div class="w-full h-full bg-white dark:bg-gray-900 rounded-full p-1 flex items-center justify-center overflow-hidden relative">
-    
-      <img src="img/cat-avatar.png"  alt="Miuw AI" class="w-full h-full object-cover rounded-full">
-    </div>
-    
-    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-white dark:border-gray-900 rounded-full"></span>
-  </button>
+        <div id="miuw-messages" class="flex-1 p-4 overflow-y-auto space-y-3 notebook-grid">
+          <div class="flex items-start gap-2">
+            <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
+            <div id="miuw-welcome" class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
+              Miyav! Ben Ayliz.dev'in kedisi **Miuw**! Yeni eklenen Apex Gear ve Yoga projelerimiz veya teslimat süreçlerimiz hakkında bana soru sorabilirsin! ✨
+            </div>
+          </div>
+        </div>
 
-  <div id="miuw-chat-window" class="hidden absolute bottom-20 right-0 w-[90vw] sm:w-96 h-[500px] bg-white dark:bg-gray-900 border border-pink-200 dark:border-purple-900/50 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-pop-in">
-    
-    
-<div class="p-3 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 text-white flex items-center justify-between shadow-sm">
-  <div class="flex items-center gap-2.5">
-    
-    <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full p-0.5 flex-shrink-0">
-      <img src="img/cat-avatar.png"  alt="Miuw" class="w-full h-full object-cover rounded-full">
-    </div>
-    <div>
-      <h3 class="font-outfit font-black text-base flex items-center gap-1 leading-tight">Miuw <span class="text-xs font-normal opacity-90">AI</span></h3>
-      <p class="text-[10px] text-pink-100 leading-tight">Sana nasıl yardımcı olabilirim? 🐾</p>
-    </div>
-  </div>
-  <button onclick="toggleMiuwChat()" class="p-1 hover:bg-white/20 rounded-full transition-colors">
-    <i data-lucide="x" class="w-5 h-5"></i>
-  </button>
-</div>
-
-
-    <div id="miuw-messages" class="flex-1 p-4 overflow-y-auto space-y-3 notebook-grid">
-   
-      <div class="flex items-start gap-2">
-        <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
-        <div class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200/60 dark:border-purple-800/40 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
-          Miyav! Ben Ayliz.dev'in akıllı kedisi **Miuw**! Sitemiz, teslimat süreçlerimiz veya fiyatlarımız hakkında ne öğrenmek istersin? ✨
+        <div class="p-3 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex gap-2 items-center">
+          <input type="text" id="miuw-input" onkeypress="handleMiuwKeyPress(event)" placeholder="Miuw'a soru sor..." class="flex-1 text-xs px-4 py-2.5 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full border border-pink-200 focus:outline-none">
+          <button onclick="sendMiuwMessage()" class="p-2.5 bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-full"><i data-lucide="send" class="w-4 h-4"></i></button>
         </div>
       </div>
     </div>
 
-    <div class="p-3 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex gap-2 items-center">
-      <input type="text" id="miuw-input" onkeypress="handleMiuwKeyPress(event)" placeholder="Miuw'a soru sor..." class="flex-1 text-xs px-4 py-2.5 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-full border border-pink-200 dark:border-purple-900 focus:outline-none focus:border-pink-400">
-      <button onclick="sendMiuwMessage()" class="p-2.5 bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-full hover:opacity-90 active:scale-95 transition-all">
-        <i data-lucide="send" class="w-4 h-4"></i>
-      </button>
-    </div>
-
-  </div>
-
-</div>
-
+    <!-- SİHİRLİ İMLEÇ ELEMENTİ -->
     <div class="magic-cursor" id="magicCursor"></div>
-
 
     <footer class="py-8 text-center text-xs text-gray-400 border-t border-gray-200/30 dark:border-gray-800/30">
         by <b class="text-gray-600 dark:text-gray-300">Ayliz Designer</b> | <span id="footer-text">© 2026 Tutkuyla ve Parıltıyla Kodlandı.</span>
     </footer>
 
-
+    <!-- JAVASCRIPT & DİNAMİK ÇEVİRİ MOTORU -->
     <script>
+        let currentLang = 'tr';
+
         const translations = {
             tr: {
-                navAbout: "Ben Kimim?", navTech: "Yetenekler", navProjects: "Projeler", navContact: "İletişim",
-                heroBadge: "Web Developer & UI/UX Designer",
-                heroTitle: "Fikirden Koda,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Dijital Sanat.</span>",
-                heroDesc: "Ben <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. Tasarımın estetiğini web teknolojileriyle buluşturuyorum. AI entegrasyonu og modern araçlarla dinamik kullanıcı deneyimleri kurgularken, gelişim yolculuğumu her gün LinkedIn'de toplulukla paylaşıyorum.",
+                navAbout: "Ben Kimim?", navProjects: "Projeler", navContact: "İletişim",
+                heroBadge: "Web Tasarım & Kodlama Öğrencisi",
+                heroTitle: "Öğreniyor, Üretiyor &<br>Kodla Sanat Yapıyorum.",
+                heroDesc: "Ben <b>Merve Ayliz</b>. Web tasarım ve kodlama alanında öğrenciyim. Her gün yapay zeka (AI) araçlarından destek alarak kendimi geliştiriyor, öğrendiklerimi pratik projeye dönüştürüyor ve bu yolculuğu her gün LinkedIn'de paylaşıyorum. 🌸",
                 btnViewProjects: "PROJELERİ İNCELE", btnContactMe: "BANA ULAŞIN",
-                techTitle: "Teknoloji & Yetenek Matrisi", techSubtitle: "Uyguladığım standartlar, diller ve aktif olarak uzmanlaştığım güncel yapılar.",
-                techSec1: "Arayüz Standartları & Şablon Yapıları", techSec2: "Hakim Olunan Programlama Dilleri", techSec3: "Öğrenimi Aktif Devam Eden Full-Stack Teknolojileri",
-                techSubHtml: "(İşaretleme Standartları)", techSubCss: "(Görsel Stil Mimarisi)", techSubTw: "(Atomik Stil Yönetimi)", techUiux: "🎨 UI/UX Dizayn & Prototipleme",
-                techSubJs: "(ES6+ İleri Seviye Mantık)", techSubPhp: "(Dinamik Sunucu Yönetimi)", badgeLearning: "Geliştiriliyor",
-                techSubReact: "(Bileşen Tabanlı Mimari)", techSubNode: "(Arka Plan & API Servisleri)",
-                projTitle: "Seçme Başyapıtlar", projSubtitle: "Görsel önizlemeli kart yapısıyla zenginleştirilmiş canlı arayüzler.",
+                termsTitle: "✨ Kişiye Özel Web Tasarım & Hizmet Şartları",
+                term1: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Kişiye Özel & Hızlı Teslimat</b>Tüm projeler işletmenizin ruhuna uygun olarak sıfırdan tasarlanır. Yoğunluğa göre web siteniz <b>5 - 7 gün</b> içerisinde yayına hazır hale getirilir.",
+                term2: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Güvenli Çalışma Mantığı</b>İş başlangıcında kapora ödemesi alınır. Projeniz tam istediğiniz gibi tamamlanıp onayınızı aldıktan sonra kalan ödeme gerçekleşir.",
+                term3: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Esnek Domain Seçenekleri</b>Size özel domain (.com vb.) kurulumu ile profesyonelleşin.",
+                projTitle: "Seçme Projeler & Şablonlar", projSubtitle: "Görsel önizlemeli kart yapısıyla hazırladığım canlı arayüzler.",
                 filterAll: "HEPSİ", filterCreative: "KONSEPT & TASARIM", filterBusiness: "İŞLETME & VİTRİN", filterWebapp: "UYGULAMALAR",
-                contactTitle: "Benimle İletişime Geçin", contactSubtitle: "Fikirlerinizi koda dökmek veya kahve içmek için tüm kanallardan açığım.",
-                labelPersonalIg: "Kişisel IG", footerText: "© 2026 Tutkuyla ve Parıltıyla Kodlandı.",
-                cardDesc1: "Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.",
-                cardDesc2: "Gece modunun mistik ve estetik dokusunu ön plana çıkaran sanatsal bir ön yüz çalışması.",
-                cardDesc3: "Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.",
-                cardDesc4: "Hızlı ve akıcı menü listelemesine sahip, yerel restoranlar için optimize vitrin şablonu.",
-                cardDesc5: "İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.",
-                cardDesc6: "Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.",
-                cardDesc7: "Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.",
-                cardDesc8: "Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.",
-                examine: "İNCELE"
+                inspectText: "İNCELE", contactTitle: "Benimle İletişime Geçin", contactSubtitle: "Fikirlerinizi koda dökmek veya projeler hakkında konuşmak için buradayım.",
+                noAppsText: "✨ Henüz aktif bir web uygulaması eklemedim, yakında harika projelerle burada olacak!",
+                miuwTooltip: "Soru sorabilirsin! 🐾", miuwSub: "Sana nasıl yardımcı olabilirim? 🐾",
+                miuwWelcome: "Miyav! Ben Ayliz.dev'in kedisi <b>Miuw</b>! Yeni eklenen Apex Gear ve Yoga projelerimiz veya teslimat süreçlerimiz hakkında bana soru sorabilirsin! ✨",
+                miuwPlaceholder: "Miuw'a soru sor...",
+                footerText: "© 2026 Tutkuyla ve Parıltıyla Kodlandı.",
+
+                // Kart Çevirileri Sözlüğü (13 Kartın Tamamı)
+                cards: {
+                    1: { desc: "Modern ve dinamik teknoloji/ekipman arayüzü ve keşif platformu.", f1: "Canlı Web Uygulaması", f2: "⚡ Hızlı performans ve modern UI/UX mimarisi", gift: "🎁 Hediye: Özel arayüz optimizasyon desteği", note: "🌐 Vercel Altyapılı Canlı Yayın" },
+                    2: { price: "Fiyat: 8.000 TL", desc: "Huzur veren renkler ve sakinleştirici arayüz ile yoga stüdyosu şablonu.", f1: "🧘‍♀️ Kurs programları, eğitmenler ve rezervasyon paneli", f2: "📱 WhatsApp üzerinden hızlı stüdyo kayıt imkanı", gift: "🎁 Hediye: İşletmeye özel QR kodlu kartvizit tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    3: { price: "Fiyat: 4.000 TL", desc: "Moonlight konseptinin geliştirilmiş, alternatif modern navigasyon elementleri içeren versiyonu.", f1: "✨ Basit, ürün odaklı vitrin site", f2: "📱 WhatsApp üzerinden hızlı sipariş imkanı", gift: "🎁 Hediye: Özel teşekkür kartı & sticker tasarımları", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    4: { price: "Fiyat: 4.000 TL", desc: "Gece modunun mistik ve estetik dokusunu ön plana çıkararak ürünlerinizi tanıtan sanatsal çalışma.", f1: "✨ Ürün odaklı minimalist arayüz", f2: "📱 Doğrudan WhatsApp sipariş yönlendirmesi", gift: "🎁 Hediye: Kargolarınız için sticker / teşekkür kartı tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    5: { price: "Fiyat: 4.000 TL", desc: "Özgün ve mistik ürün satan niş mağazalar için tasarlanmış karanlık tema e-ticaret vitrini.", f1: "✨ Şık ürün listeleme paneli", f2: "📱 Hızlı WhatsApp sipariş butonu", gift: "🎁 Hediye: Markanıza özel sticker & teşekkür kartı tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    6: { price: "Fiyat: 9.000 TL", desc: "İştah açıcı renk paleti ve kart mimarisiyle tasarlanan, sipariş odaklı tek sayfa restoran teması.", f1: "🌐 Çoklu dil desteği (Çift Dil Entegrasyonu)", f2: "🛵 Yemeksepeti & Trendyol Yemek dijital dükkan bağlantısı", f3: "📍 Google & Apple Maps konum entegrasyonu", gift: "🎁 Hediye: İşletmeye özel QR kodlu kartvizit tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    7: { price: "Fiyat: 9.000 TL", desc: "Büyük gurme görsellerini ve fiyat listelerini temiz bir hiyerarşiyle sunan modern şablon.", f1: "🌐 Dil Entegrasyonu + WhatsApp Sipariş", f2: "🍔 Trendyol Yemek & Yemeksepeti direkt link bağlantısı", f3: "🗺️ Google Maps & Apple Maps yönlendirmesi", gift: "🎁 Hediye: İşletmeniz için QR kodlu kartvizit tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    8: { price: "Fiyat: 9.000 TL", desc: "Tatlı ve butik kafeler için yumuşak hatlar ve canlı kutularla hazırlanan modern vitrin.", f1: "🌐 2 Farklı Dil Seçeneği + Canlı WhatsApp Siparişi", f2: "🍓 Yemeksepeti & Trendyol Yemek Entegrasyonu", f3: "📍 Google Maps / Apple Maps Bağlantıları", gift: "🎁 Hediye: İşletmeye özel QR kartvizit tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    9: { price: "Fiyat: 9.000 TL", desc: "Üçüncü nesil kahveciler için minimalist, sakinleştirici toprak tonlarına sahip kahve menüsü.", f1: "☕ Çoklu dil modülü + WhatsApp hızlı sipariş", f2: "🛵 Dijital paket servis platformlarına bağlantı", gift: "🎁 Hediye: İşletmenize özel QR Kodlu Kartvizit", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    10: { price: "Fiyat: 8.000 TL", desc: "Butik nişan, kına ve hediye ürünleri için özel sipariş, SSS ve konfigüratör altyapılı vitrin.", f1: "🛍️ Ürün detayları, SSS paneli ve Google Maps", f2: "📩 Ödeme sonrası Otomatik WhatsApp Sipariş Mesajı", gift: "🎁 Hediye: Özel teşekkür kartı & sticker tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    11: { price: "Fiyat: 9.000 TL", desc: "Kaş, kirpik ve tırnak uygulaması yapan güzellik salonları için randevu odaklı web çözümü.", f1: "💅 Fiyat Listesi, Görsel Galeri & SSS Modülü", f2: "📅 Online Randevu Formu + Harita Entegrasyonu", gift: "🎁 Hediye: İşletmeye özel QR Kodlu Kartvizit", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    12: { price: "Fiyat: 9.000 TL", desc: "Sadece tırnak ve protez tırnak stüdyolarına özel zarif, dinamik ve estetik tanıtım şablonu.", f1: "✨ Hizmet & Fiyat Tablosu, Canlı Galeri ve SSS", f2: "📍 Google Maps Konum ve WhatsApp Randevu Bağlantısı", gift: "🎁 Hediye: Stüdyonuza özel QR Kodlu Kartvizit", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" },
+                    13: { price: "Fiyat: 12.000 TL", desc: "Düğün, kına, lansman ve özel etkinlik ajansları için yüksek çözünürlüklü konsept sergileme sitesi.", f1: "🎉 Mobil Uyumlu Premium Etkinlik & Konsept Galerisi", f2: "📞 Hızlı İletişim, Fiyat Teklifi ve Talep Formu", gift: "🎁 Hediye: Özel QR Kodlu Lüks Kartvizit Tasarımı", note: "🌐 Size Özel Domain (Domain ücreti alıcıya aittir)" }
+                }
             },
             en: {
-                navAbout: "About Me", navTech: "Skills", navProjects: "Projects", navContact: "Contact",
-                heroBadge: "Web Developer & UI/UX Designer",
-                heroTitle: "From Idea to Code,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Digital Art.</span>",
-                heroDesc: "I am <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. I blend design aesthetics with web technologies. While building dynamic user experiences with AI integration and modern tools, I share my daily growth journey on LinkedIn.",
+                navAbout: "About Me", navProjects: "Projects", navContact: "Contact",
+                heroBadge: "Web Design & Coding Student",
+                heroTitle: "Learning, Building &<br>Creating Art with Code.",
+                heroDesc: "I'm <b>Merve Ayliz</b>. A web design and coding student. Every day, I improve myself using AI tools, turn what I learn into practical projects, and share this journey on LinkedIn. 🌸",
                 btnViewProjects: "VIEW PROJECTS", btnContactMe: "CONTACT ME",
-                techTitle: "Technology & Skill Matrix", techSubtitle: "Standards, languages, and modern stacks I actively use and specialize in.",
-                techSec1: "Interface Standards & Layout Structures", techSec2: "Mastered Programming Languages", techSec3: "Active Full-Stack Learning Path",
-                techSubHtml: "(Markup Standards)", techSubCss: "(Visual Style Architecture)", techSubTw: "(Atomic Style Management)", techUiux: "🎨 UI/UX Design & Prototyping",
-                techSubJs: "(ES6+ Advanced Logic)", techSubPhp: "(Dynamic Server Management)", badgeLearning: "Learning",
-                techSubReact: "(Component-Based Architecture)", techSubNode: "(Backend & API Services)",
-                projTitle: "Selected Masterpieces", projSubtitle: "Live user interfaces enriched with image-previewed card layouts.",
-                filterAll: "ALL", filterCreative: "CONCEPT & DESIGN", filterBusiness: "BUSINESS & SHOWCASE", filterWebapp: "WEB APPS",
-                contactTitle: "Get In Touch", contactSubtitle: "I am open to all channels to turn your ideas into code or just grab a coffee.",
-                labelPersonalIg: "Personal IG", footerText: "© 2026 Coded with Passion and Glow.",
-                cardDesc1: "The upgraded version of the Moonlight concept containing alternative modern navigation elements.",
-                cardDesc2: "An artistic frontend study highlighting the mystical and aesthetic texture of dark mode.",
-                cardDesc3: "A dark theme e-commerce showcase designed for niche stores selling unique and mystical products.",
-                cardDesc4: "A showcase template optimized for local restaurants with a fast and fluid menu listing.",
-                cardDesc5: "An order-oriented single-page restaurant theme designed with an appetizing color palette.",
-                cardDesc6: "A modern template presenting large gourmet visuals and price lists with a clean hierarchy.",
-                cardDesc7: "A modern showcase prepared with soft lines and vivid boxes for sweet and boutique cafes.",
-                cardDesc8: "A minimalist coffee menu with calming earth tones for third-generation coffee shops.",
-                examine: "VIEW"
+                termsTitle: "✨ Custom Web Design & Service Terms",
+                term1: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Custom & Fast Delivery</b>All projects are designed from scratch to match your brand. Your website is ready in <b>5 - 7 days</b>.",
+                term2: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Secure Payment System</b>A deposit is taken at the start, and the remaining balance is paid after your final approval.",
+                term3: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Flexible Domain Options</b>Professionalize with a custom domain (.com, etc.).",
+                projTitle: "Featured Projects & Templates", projSubtitle: "Live interfaces prepared with visual preview card layouts.",
+                filterAll: "ALL", filterCreative: "CONCEPT & DESIGN", filterBusiness: "BUSINESS & SHOWCASE", filterWebapp: "APPLICATIONS",
+                inspectText: "INSPECT", contactTitle: "Get in Touch with Me", contactSubtitle: "I'm here to turn your ideas into code or talk about projects.",
+                noAppsText: "✨ I haven't added an active web application yet, it will be here soon with amazing projects!",
+                miuwTooltip: "Ask a question! 🐾", miuwSub: "How can I help you? 🐾",
+                miuwWelcome: "Meow! I'm <b>Miuw</b>, Ayliz.dev's cat! You can ask me about our new Apex Gear and Yoga projects or delivery processes! ✨",
+                miuwPlaceholder: "Ask Miuw a question...",
+                footerText: "© 2026 Coded with Passion and Glow.",
+
+                cards: {
+                    1: { desc: "Modern and dynamic tech/equipment interface and discovery platform.", f1: "Live Web App", f2: "⚡ Fast performance and modern UI/UX architecture", gift: "🎁 Gift: Special interface optimization support", note: "🌐 Vercel Powered Live Stream" },
+                    2: { price: "Price: 8,000 TL", desc: "Yoga studio template with calming colors and a relaxing interface.", f1: "🧘‍♀️ Course schedules, trainers and reservation panel", f2: "📱 Fast studio registration via WhatsApp", gift: "🎁 Gift: Custom QR coded business card design", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    3: { price: "Price: 4,000 TL", desc: "Enhanced version of the Moonlight concept with alternative modern navigation elements.", f1: "✨ Simple, product-focused showcase site", f2: "📱 Fast ordering via WhatsApp", gift: "🎁 Gift: Custom thank-you card & sticker designs", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    4: { price: "Price: 4,000 TL", desc: "An artistic work introducing your products by highlighting the mystical and aesthetic touch of dark mode.", f1: "✨ Product-focused minimalist interface", f2: "📱 Direct WhatsApp order routing", gift: "🎁 Gift: Sticker / thank-you card design for your shipments", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    5: { price: "Price: 4,000 TL", desc: "Dark theme e-commerce showcase designed for niche stores selling unique and mystical products.", f1: "✨ Stylish product listing panel", f2: "📱 Fast WhatsApp order button", gift: "🎁 Gift: Sticker & thank-you card design specific to your brand", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    6: { price: "Price: 9,000 TL", desc: "Order-focused single-page restaurant theme designed with an appetizing color palette.", f1: "🌐 Multi-language support (Dual Language Integration)", f2: "🛵 Food delivery platform links (Yemeksepeti & Trendyol Yemek)", f3: "📍 Google & Apple Maps location integration", gift: "🎁 Gift: Custom QR coded business card design", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    7: { price: "Price: 9,000 TL", desc: "Modern template presenting large gourmet images and price lists with a clean hierarchy.", f1: "🌐 Language Integration + WhatsApp Order", f2: "🍔 Direct link connection to delivery apps", f3: "🗺️ Google Maps & Apple Maps routing", gift: "🎁 Gift: Custom QR coded business card design for your business", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    8: { price: "Price: 9,000 TL", desc: "Modern showcase prepared with soft lines and vibrant boxes for sweet and boutique cafes.", f1: "🌐 2 Different Language Options + Live WhatsApp Order", f2: "🍓 Delivery platform integration", f3: "📍 Google Maps / Apple Maps Links", gift: "🎁 Gift: Custom QR business card design for your business", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    9: { price: "Price: 9,000 TL", desc: "Minimalist coffee menu with calming earthy tones for third-wave coffee shops.", f1: "☕ Multi-language module + WhatsApp fast order", f2: "🛵 Connection to digital delivery platforms", gift: "🎁 Gift: Custom QR Coded Business Card for your Business", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    10: { price: "Price: 8,000 TL", desc: "Vitrine with custom order, FAQ, and configurator infrastructure for boutique engagement and gift products.", f1: "🛍️ Product details, FAQ panel, and Google Maps", f2: "📩 Automated WhatsApp Order Message after payment", gift: "🎁 Gift: Custom thank-you card & sticker designs", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    11: { price: "Price: 9,000 TL", desc: "Appointment-oriented web solution for beauty salons performing eyebrow, eyelash, and nail applications.", f1: "💅 Price List, Visual Gallery & FAQ Module", f2: "📅 Online Appointment Form + Map Integration", gift: "🎁 Gift: Custom QR Coded Business Card for your Studio", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    12: { price: "Price: 9,000 TL", desc: "Elegant, dynamic, and aesthetic presentation template dedicated exclusively to nail and acrylic nail studios.", f1: "✨ Service & Price Table, Live Gallery and FAQ", f2: "📍 Google Maps Location and WhatsApp Appointment Connection", gift: "🎁 Gift: Custom QR Coded Business Card for your Studio", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" },
+                    13: { price: "Price: 12,000 TL", desc: "High-resolution concept presentation site for wedding, henna night, launch, and special event agencies.", f1: "🎉 Mobile Friendly Premium Event & Concept Gallery", f2: "📞 Fast Communication, Price Quote and Request Form", gift: "🎁 Gift: Custom QR Coded Luxury Business Card Design", note: "🌐 Custom Domain (Domain fee belongs to the buyer)" }
+                }
             },
             de: {
-                navAbout: "Über mich", navTech: "Fähigkeiten", navProjects: "Projekte", navContact: "Kontakt",
-                heroBadge: "Webentwickler & UI/UX Designer",
-                heroTitle: "Von der Idee zum Code,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>Digitale Kunst.</span>",
-                heroDesc: "Ich bin <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>. Ich verbinde Designästhetik mit Webtechnologien. Während ich dynamische Benutzererfahrungen aufbaue, teile ich meine Reise auf LinkedIn.",
-                btnViewProjects: "PROJEKTE SEHEN", btnContactMe: "KONTAKTIERE MICH",
-                techTitle: "Technologie- & Kompetenzmatrix", techSubtitle: "Standards, Sprachen und moderne Frameworks, auf die ich mich spezialisiere.",
-                techSec1: "Schnittstellenstandards & Layoutstrukturen", techSec2: "Beherrschte Programmiersprachen", techSec3: "Aktiver Full-Stack-Lernpfad",
-                techSubHtml: "(Auszeichnungsstandards)", techSubCss: "(Visuelle Stilarchitektur)", techSubTw: "(Atomares Stilmanagement)", techUiux: "🎨 UI/UX Design & Prototyping",
-                techSubJs: "(ES6+ Fortgeschrittene Logik)", techSubPhp: "(Dynamische Serververwaltung)", badgeLearning: "Lernen",
-                techSubReact: "(Komponentenbasierte Architektur)", techSubNode: "(Backend & API-Dienste)",
-                projTitle: "Ausgewählte Meisterwerke", projSubtitle: "Live-Benutzeroberflächen, angereichert mit kartenbasierten Bildvorschauen.",
-                filterAll: "ALLE", filterCreative: "KONZEPT & DESIGN", filterBusiness: "BUSINESS & SHOWCASE", filterWebapp: "WEB-APPS",
-                contactTitle: "Kontaktieren Sie mich", contactSubtitle: "Ich bin offen für alle Kanäle, um Ihre Ideen in Code umzusetzen.",
-                labelPersonalIg: "Persönliches IG", footerText: "© 2026 Mit Leidenschaft und Glanz codiert.",
-                cardDesc1: "Die aktualisierte Version des Moonlight-Konzepts mit alternativen Navigationselementen.",
-                cardDesc2: "Eine künstlerische Frontend-Studie, die die mystische Textur des Dark Mode hervorragt.",
-                cardDesc3: "Ein E-Commerce-Showcase für Nischengeschäfte, die mystische Produkte verkaufen.",
-                cardDesc4: "Eine für lokale Restaurants optimierte Showcase-Vorlage mit schneller Menüauflistung.",
-                cardDesc5: "Ein bestellorientiertes, einseitiges Restaurant-Thema mit appetitlicher Farbpalette.",
-                cardDesc6: "Eine moderne Vorlage, die große Gourmet-Bilder mit einer klaren Hierarchie präsentiert.",
-                cardDesc7: "Ein modernes Schaufenster mit weichen Linien und lebendigen Boxen für süße Cafés.",
-                cardDesc8: "Ein minimalistisches Kaffeemenü mit beruhigenden Erdtönen für Cafés der dritten Generation.",
-                examine: "ANSCHAUEN"
+                navAbout: "Über mich", navProjects: "Projekte", navContact: "Kontakt",
+                heroBadge: "Webdesign & Coding Studentin",
+                heroTitle: "Lernen, Erstellen &<br>Kunst mit Code machen.",
+                heroDesc: "Ich bin <b>Merve Ayliz</b>. Webdesign- und Coding-Studentin. Jeden Tag entwickle ich mich mit KI-Tools weiter und teile meine Reise auf LinkedIn. 🌸",
+                btnViewProjects: "PROJEKTE ANSEHEN", btnContactMe: "KONTAKTIERE MICH",
+                termsTitle: "✨ Individuelles Webdesign & Servicebedingungen",
+                term1: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Individuell & Schnelle Lieferung</b>Alle Projekte werden von Grund auf neu gestaltet. Ihre Website ist in <b>5 - 7 Tagen</b> einsatzbereit.",
+                term2: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Sicheres Arbeitsmodell</b>Zu Beginn wird eine Anzahlung erhoben. Der Restbetrag wird nach Ihrer Zustimmung gezahlt.",
+                term3: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>Flexible Domain-Optionen</b>Professionalisieren Sie sich mit einer eigenen Domain.",
+                projTitle: "Ausgewählte Projekte & Vorlagen", projSubtitle: "Live-Benutzeroberflächen mit visuellen Vorschaukarten.",
+                filterAll: "ALLE", filterCreative: "KONZEPT & DESIGN", filterBusiness: "GESCHÄFT & VITRINE", filterWebapp: "ANWENDUNGEN",
+                inspectText: "ANSEHEN", contactTitle: "Treten Sie mit mir in Kontakt", contactSubtitle: "Ich bin hier, um Ihre Ideen in Code umzusetzen.",
+                noAppsText: "✨ Noch keine aktive Web-App hinzugefügt, bald mit tollen Projekten hier!",
+                miuwTooltip: "Stellen Sie eine Frage! 🐾", miuwSub: "Wie kann ich Ihnen helfen? 🐾",
+                miuwWelcome: "Miau! Ich bin <b>Miuw</b>, die Katze von Ayliz.dev! Fragen Sie mich zu unseren Projekten oder Lieferzeiten! ✨",
+                miuwPlaceholder: "Fragen Sie Miuw...",
+                footerText: "© 2026 Mit Leidenschaft und Glanz codiert.",
+
+                cards: {
+                    1: { desc: "Moderne und dynamische Technologie-/Ausrüstungsoberfläche und Entdeckungsplattform.", f1: "Live-Web-App", f2: "⚡ Schnelle Leistung und moderne UI/UX-Architektur", gift: "🎁 Geschenk: Spezielle Unterstützung bei der Oberflächenoptimierung", note: "🌐 Vercel-basierter Live-Stream" },
+                    2: { price: "Preis: 8.000 TL", desc: "Yogastudio-Template mit beruhigenden Farben und einer entspannenden Benutzeroberfläche.", f1: "🧘‍♀️ Kurspläne, Trainer und Reservierungspanel", f2: "📱 Schnelle Studioregistrierung über WhatsApp", gift: "🎁 Geschenk: Maßgeschneiderte QR-Code-Visitenkarte", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    3: { price: "Preis: 4.000 TL", desc: "Erweiterte Version des Moonlight-Konzepts mit alternativen modernen Navigationselementen.", f1: "✨ Einfache, produktorientierte Vitrinenseite", f2: "📱 Schnelle Bestellung über WhatsApp", gift: "🎁 Geschenk: Dankeskarten- und Aufkleber-Designs", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    4: { price: "Preis: 4.000 TL", desc: "Ein künstlerisches Werk, das Ihre Produkte durch die mystische Note des Dark Mode präsentiert.", f1: "✨ Produktorientierte minimalistische Oberfläche", f2: "📱 Direkte WhatsApp-Bestellweiterleitung", gift: "🎁 Geschenk: Aufkleber-/Dankeskarten-Design für Sendungen", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    5: { price: "Preis: 4.000 TL", desc: "Dark-Theme-E-Commerce-Vitrine für Nischengeschäfte mit mystischen Produkten.", f1: "✨ Stilvolles Produktlisten-Panel", f2: "📱 Schneller WhatsApp-Bestellbutton", gift: "🎁 Geschenk: Aufkleber & Dankeskarten-Design", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    6: { price: "Preis: 9.000 TL", desc: "Bestellorientiertes Einseiten-Restaurant-Thema mit ansprechender Farbpalette.", f1: "🌐 Mehrsprachige Unterstützung (Zweisprachige Integration)", f2: "🛵 Links zu Lieferdiensten", f3: "📍 Google & Apple Maps Standortintegration", gift: "🎁 Geschenk: Maßgeschneiderte QR-Code-Visitenkarte", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    7: { price: "Preis: 9.000 TL", desc: "Modernes Template mit großen Gourmet-Bildern und Preislisten.", f1: "🌐 Sprachintegration + WhatsApp-Bestellung", f2: "🍔 Direkter Link zu Lieferdiensten", f3: "🗺️ Google Maps & Apple Maps Routing", gift: "🎁 Geschenk: QR-Code-Visitenkartendesign für Ihr Unternehmen", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    8: { price: "Preis: 9.000 TL", desc: "Moderne Vitrine mit weichen Linien für süße und Boutique-Cafés.", f1: "🌐 2 verschiedene Sprachoptionen + Live-WhatsApp-Bestellung", f2: "🍓 Lieferdienst-Integration", f3: "📍 Google Maps / Apple Maps Links", gift: "🎁 Geschenk: QR-Visitenkartendesign", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    9: { price: "Preis: 9.000 TL", desc: "Minimalistisches Kaffeemenü mit beruhigenden Erdtönen für Coffee-Shops.", f1: "☕ Mehrsprachiges Modul + WhatsApp-Schnellbestellung", f2: "🛵 Verbindung zu digitalen Lieferservices", gift: "🎁 Geschenk: Maßgeschneiderte QR-Code-Visitenkarte", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    10: { price: "Preis: 8.000 TL", desc: "Vitrine mit Sonderbestellung, FAQ und Konfigurator für Boutiquen.", f1: "🛍️ Produktdetails, FAQ-Panel und Google Maps", f2: "📩 Automatische WhatsApp-Bestellnachricht nach Zahlung", gift: "🎁 Geschenk: Dankeskarten- und Aufkleber-Designs", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    11: { price: "Preis: 9.000 TL", desc: "Terminorientierte Webslösung für Kosmetiksalons.", f1: "💅 Preisliste, visuelle Galerie & FAQ-Modul", f2: "📅 Online-Terminformular + Kartenintegration", gift: "🎁 Geschenk: Maßgeschneiderte QR-Code-Visitenkarte für Ihr Studio", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    12: { price: "Preis: 9.000 TL", desc: "Elegantes und dynamisches Präsentationstemplate für Nagelstudios.", f1: "✨ Service- und Preistabelle, Live-Galerie und FAQ", f2: "📍 Google Maps Standort und WhatsApp-Terminverbindung", gift: "🎁 Geschenk: Maßgeschneiderte QR-Code-Visitenkarte für Ihr Studio", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" },
+                    13: { price: "Preis: 12.000 TL", desc: "Hochauflösende Konzeptpräsentationsseite für Hochzeits- und Eventagenturen.", f1: "🎉 Mobilfreundliche Premium-Event- und Konzeptgalerie", f2: "📞 Schnelle Kommunikation, Preisangebot und Anfrageformular", gift: "🎁 Geschenk: Individuelles Luxus-Visitenkartendesign mit QR-Code", note: "🌐 Benutzerdefinierte Domain (Domaingebühr trägt der Käufer)" }
+                }
             },
             ko: {
-                navAbout: "소개", navTech: "기술", navProjects: "프로젝트", navContact: "연락처",
-                heroBadge: "웹 개발자 & UI/UX 디자이너",
-                heroTitle: "아이디어에서 코드로,<br><span class='bg-gradient-to-r from-pudra-accent to-pink-500 bg-clip-text text-webkit-background-clip-text text-transparent'>디지털 아트.</span>",
-                heroDesc: "안녕하세요, <b class='font-semibold text-gray-900 dark:text-white'>Merve Ayliz</b>입니다. 디자인의 미학과 웹 기술을 결합합니다. AI 통합 및 현대적 도구로 동적 UX를 구축하며, 매일 LinkedIn에 성장 과정을 공유하고 있습니다.",
-                btnViewProjects: "프로젝트 보기", btnContactMe: "문의하기",
-                techTitle: "기술 및 역량 매트릭스", techSubtitle: "현재 전문적으로 다루고 적용 중인 표준, 언어 및 아키텍처입니다.",
-                techSec1: "인터페이스 표준 및 레이아웃 구조", techSec2: "마스터한 프로그래밍 언어", techSec3: "현재 학습 중인 풀스택 기술",
-                techSubHtml: "(마크업 표준)", techSubCss: "(시각적 스타일 아키텍처)", techSubTw: "(원자적 스타일 관리)", techUiux: "🎨 UI/UX 디자인 & 프로토타이핑",
-                techSubJs: "(ES6+ 고급 논리)", techSubPhp: "(동적 서버 관리)", badgeLearning: "학습 중",
-                techSubReact: "(컴포넌트 기반 아키텍처)", techSubNode: "(백엔드 & API 서비스)",
-                projTitle: "엄선된 프로젝트", projSubtitle: "이미지 미리보기가 포함된 카드 구조의 라이브 인터페이스입니다.",
-                filterAll: "전체보기", filterCreative: "컨셉 & 디자인", filterBusiness: "비즈니스 & 쇼케이스", filterWebapp: "웹 앱",
-                contactTitle: "저와 연락하기", contactSubtitle: "아이디어를 코드로 구현하거나 가볍게 커피 한잔하기 위한 모든 채널이 열려 있습니다.",
-                labelPersonalIg: "개인 IG", footerText: "© 2026 열정과 빛으로 코딩되었습니다.",
-                cardDesc1: "대안적인 현대식 네비게이션 요소를 포함한 Moonlight 컨셉의 업그레이드 버전.",
-                cardDesc2: "다크 모드의 신비롭고 미학적인 질감을 강조한 예술적인 프론트엔드 연구.",
-                cardDesc3: "독특하고 신비로운 상품을 판매하는 니치 마켓을 위한 다크 테마 이커머스 쇼케이스.",
-                cardDesc4: "빠르고 유연한 메뉴 목록을 갖춘 로컬 레스토랑 전용 쇼케이스 템플릿.",
-                cardDesc5: "식욕을 돋우는 컬러 팔레트와 카드 구조로 디자인된 주문 지향형 싱글 페이지 테마.",
-                cardDesc6: "깔끔한 계층 구조로 대형 고메 비주얼과 가격표를 제공하는 모던 템플릿.",
-                cardDesc7: "디저트 및 부티크 카페를 위해 부드러운 라인과 생생한 박스로 준비된 쇼케이스.",
-                cardDesc8: "3세대 커피숍을 위한 차분한 어스 톤의 미니멀한 커피 메뉴.",
-                examine: "보기"
+                navAbout: "소개", navProjects: "프로젝트", navContact: "연락처",
+                heroBadge: "웹 디자인 & 코딩 학생",
+                heroTitle: "배우고, 만들고 &<br>코드로 예술을 만듭니다.",
+                heroDesc: "안녕하세요 <b>멜베 아일리즈</b>입니다. 웹 디자인과 코딩을 공부하는 학생입니다. AI 도구를 활용해 매일 성장하고 있습니다. 🌸",
+                btnViewProjects: "프로젝트 보기", btnContactMe: "연락하기",
+                termsTitle: "✨ 맞춤형 웹 디자인 및 서비스 약관",
+                term1: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>맞춤형 및 빠른 전달</b>모든 프로젝트는 브랜드에 맞춰 처음부터 디자인됩니다. 웹사이트는 <b>5~7일</b> 내에 준비됩니다.",
+                term2: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>안전한 결제 시스템</b>시작 시 계약금을 받고, 최종 승인 후 잔액이 지불됩니다.",
+                term3: "<b class='font-semibold text-gray-900 dark:text-white block mb-1'>유연한 도메인 옵션</b>사용자 지정 도메인으로 전문성을 높이세요.",
+                projTitle: "추천 프로젝트 및 템플릿", projSubtitle: "시각적 미리보기 카드 레이아웃으로 준비된 라이브 인터페이스.",
+                filterAll: "전체", filterCreative: "컨셉 & 디자인", filterBusiness: "비즈니스 & 쇼케이스", filterWebapp: "애플리케이션",
+                inspectText: "자세히 보기", contactTitle: "연락주세요", contactSubtitle: "아이디어를 코드로 구현하거나 프로젝트에 대해 이야기해 보세요.",
+                noAppsText: "✨ 아직 활성화된 웹 애플리케이션이 없습니다. 곧 멋진 프로젝트로 찾아오겠습니다!",
+                miuwTooltip: "질문해 보세요! 🐾", miuwSub: "어떻게 도와드릴까요? 🐾",
+                miuwWelcome: "야옹! 저는 Ayliz.dev의 고양이 <b>Miuw</b>입니다! Apex Gear 및 Yoga 프로젝트나 전달 과정에 대해 질문해 주세요! ✨",
+                miuwPlaceholder: "Miuw에게 질문하기...",
+                footerText: "© 2026 열정과 빛으로 코딩됨.",
+
+                cards: {
+                    1: { desc: "모던하고 역동적인 기술/장비 인터페이스 및 탐색 플랫폼.", f1: "라이브 웹 앱", f2: "⚡ 빠른 성능 및 모던 UI/UX 아키텍처", gift: "🎁 선물: 특별 인터페이스 최적화 지원", note: "🌐 Vercel 기반 라이브 스트림" },
+                    2: { price: "가격: 8,000 TL", desc: "차분한 색상과 편안한 인터페이스를 갖춘 요가 스튜디오 템플릿.", f1: "🧘‍♀️ 코스 일정, 강사 및 예약 패널", f2: "📱 WhatsApp을 통한 빠른 스튜디오 등록", gift: "🎁 선물: 스튜디오 전용 QR 코드 명함", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    3: { price: "가격: 4,000 TL", desc: "대체 모던 네비게이션 요소가 포함된 moonlight 컨셉의 향상된 버전.", f1: "✨ 심플하고 상품 중심적인 쇼케이스 사이트", f2: "📱 WhatsApp을 통한 빠른 주문", gift: "🎁 선물: 맞춤형 감사 카드 및 스티커 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    4: { price: "가격: 4,000 TL", desc: "다크 모드의 신비롭고 미적인 터치를 강조하여 제품을 소개하는 예술적 작업.", f1: "✨ 제품 중심 미니멀 인터페이스", f2: "📱 다이렉트 WhatsApp 주문 연동", gift: "🎁 선물: 배송용 스티커 / 감사 카드 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    5: { price: "가격: 4,000 TL", desc: "독창적이고 신비로운 상품을 판매하는 닉스 상점을 위해 디자인된 다크 테마 이커머스 쇼케이스.", f1: "✨ 세련된 상품 리스팅 패널", f2: "📱 빠른 WhatsApp 주문 버튼", gift: "🎁 선물: 브랜드 전용 스티커 및 감사 카드 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    6: { price: "가격: 9,000 TL", desc: "식욕을 돋우는 색상 팔레트와 카드 구조로 디자인된 주문 중심 단일 페이지 레스토랑 테마.", f1: "🌐 다국어 지원 (이중 언어 통합)", f2: "🛵 배달 플랫폼 링크 연동", f3: "📍 Google & Apple Maps 위치 통합", gift: "🎁 선물: 스튜디오 전용 QR 코드 명함", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    7: { price: "가격: 9,000 TL", desc: "대형 미식 이미지와 가격표를 깔끔한 계층 구조로 제공하는 모던 템플릿.", f1: "🌐 언어 통합 + WhatsApp 주문", f2: "🍔 배달 앱 다이렉트 링크 연결", f3: "🗺️ Google Maps & Apple Maps 길찾기", gift: "🎁 선물: 비즈니스용 QR 코드 명함 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    8: { price: "가격: 9,000 TL", desc: "부드러운 곡선과 생동감 넘치는 박스로 준비된 디저트 및 부티크 카페용 모던 쇼케이스.", f1: "🌐 2가지 언어 옵션 + 라이브 WhatsApp 주문", f2: "🍓 배달 플랫폼 통합", f3: "📍 Google Maps / Apple Maps 링크", gift: "🎁 선물: 비즈니스용 QR 명함 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    9: { price: "가격: 9,000 TL", desc: "제3의 물결 커피숍을 위한 미니멀하고 차분한 톤의 커피 메뉴.", f1: "☕ 다국어 모듈 + WhatsApp 빠른 주문", f2: "🛵 디지털 배달 플랫폼 연결", gift: "🎁 선물: 스튜디오 전용 QR 코드 명함", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    10: { price: "가격: 8,000 TL", desc: "부티크 약혼, 청첩장 및 선물 상품을 위한 맞춤 주문, FAQ 및 설정 인프라가 포함된 쇼케이스.", f1: "🛍️ 상품 세부 정보, FAQ 패널 및 Google Maps", f2: "📩 결제 후 자동 WhatsApp 주문 메시지", gift: "🎁 선물: 맞춤형 감사 카드 및 스티커 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    11: { price: "가격: 9,000 TL", desc: "눈썹, 속눈썹 및 네일 아트 뷰티 살롱을 위한 예약 중심 웹 솔루션.", f1: "💅 가격표, 비주얼 갤러리 및 FAQ 모듈", f2: "📅 온라인 예약 양식 + 지도 통합", gift: "🎁 선물: 스튜디오 전용 QR 코드 명함", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    12: { price: "가격: 9,000 TL", desc: "네일 및 젤네일 스튜디오 전용의 우아하고 역동적이며 미적인 소개 템플릿.", f1: "✨ 서비스 및 가격표, 라이브 갤러리 및 FAQ", f2: "📍 Google Maps 위치 및 WhatsApp 예약 연결", gift: "🎁 선물: 스튜디오 전용 QR 코드 명함", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" },
+                    13: { price: "가격: 12,000 TL", desc: "웨딩, 행사 및 특별 이벤트 에이전시를 위한 고해상도 컨셉 쇼케이스 사이트.", f1: "🎉 모바일 친화적 프리미엄 이벤트 및 컨셉 갤러리", f2: "📞 빠른 커뮤니케이션, 가격 견적 및 요청 양식", gift: "🎁 선물: 맞춤형 QR 코드 럭셔리 명함 디자인", note: "🌐 맞춤형 도메인 (도메인 비용은 구매자 부담)" }
+                }
             }
         };
 
-        function applyLanguage(lang) {
-            const dictionary = translations[lang] || translations['tr'];
-            
-            try {
-                document.getElementById('nav-about').innerText = dictionary.navAbout || '';
-                document.getElementById('nav-tech').innerText = dictionary.navTech || '';
-                document.getElementById('nav-projects').innerText = dictionary.navProjects || '';
-                document.getElementById('nav-contact').innerText = dictionary.navContact || '';
-                
-                document.getElementById('mobile-nav-about').innerText = dictionary.navAbout || '';
-                document.getElementById('mobile-nav-tech').innerText = dictionary.navTech || '';
-                document.getElementById('mobile-nav-projects').innerText = dictionary.navProjects || '';
-                document.getElementById('mobile-nav-contact').innerText = dictionary.navContact || '';
-
-                document.getElementById('hero-badge').innerText = dictionary.heroBadge || '';
-                document.getElementById('hero-title').innerHTML = dictionary.heroTitle || '';
-                document.getElementById('hero-desc').innerHTML = dictionary.heroDesc || '';
-                document.getElementById('btn-view-projects').innerText = dictionary.btnViewProjects || '';
-                document.getElementById('btn-contact-me').innerText = dictionary.btnContactMe || '';
-                
-                document.getElementById('tech-title').innerText = dictionary.techTitle || '';
-                document.getElementById('tech-subtitle').innerText = dictionary.techSubtitle || '';
-                document.getElementById('tech-sec1').innerText = dictionary.techSec1 || '';
-                document.getElementById('tech-sec2').innerText = dictionary.techSec2 || '';
-                document.getElementById('tech-sec3').innerText = dictionary.techSec3 || '';
-                document.getElementById('tech-uiux').innerHTML = dictionary.techUiux || '';
-                document.getElementById('badge-learning').innerText = dictionary.badgeLearning || '';
-                
-                document.getElementById('proj-title').innerText = dictionary.projTitle || '';
-                document.getElementById('proj-subtitle').innerText = dictionary.projSubtitle || '';
-                document.getElementById('filter-all').innerText = dictionary.filterAll || '';
-                document.getElementById('filter-creative').innerText = dictionary.filterCreative || '';
-                document.getElementById('filter-business').innerText = dictionary.filterBusiness || '';
-                document.getElementById('filter-webapp').innerText = dictionary.filterWebapp || '';
-                
-                document.getElementById('contact-title').innerText = dictionary.contactTitle || '';
-                document.getElementById('contact-subtitle').innerText = dictionary.contactSubtitle || '';
-                document.getElementById('label-personal-ig').innerText = dictionary.labelPersonalIg || '';
-                document.getElementById('footer-text').innerText = dictionary.footerText || '';
-
-                if(document.querySelector('.tech-sub-html')) document.querySelector('.tech-sub-html').innerText = dictionary.techSubHtml || '';
-                if(document.querySelector('.tech-sub-css')) document.querySelector('.tech-sub-css').innerText = dictionary.techSubCss || '';
-                if(document.querySelector('.tech-sub-tw')) document.querySelector('.tech-sub-tw').innerText = dictionary.techSubTw || '';
-                if(document.querySelector('.tech-sub-js')) document.querySelector('.tech-sub-js').innerText = dictionary.techSubJs || '';
-                if(document.querySelector('.tech-sub-php')) document.querySelector('.tech-sub-php').innerText = dictionary.techSubPhp || '';
-                if(document.querySelector('.tech-sub-react')) document.querySelector('.tech-sub-react').innerText = dictionary.techSubReact || '';
-                if(document.querySelector('.tech-sub-node')) document.querySelector('.tech-sub-node').innerText = dictionary.techSubNode || '';
-
-                for (let i = 1; i <= 8; i++) {
-                    const descElem = document.querySelector(`.card-desc-${i}`);
-                    const btnElem = document.querySelector(`.card-btn-${i}`);
-                    if (descElem && dictionary[`cardDesc${i}`]) {
-                        descElem.innerText = dictionary[`cardDesc${i}`];
-                    }
-                    if (btnElem && dictionary.examine) {
-                        btnElem.innerHTML = `${dictionary.examine} <i data-lucide="external-link" class="w-3 md:w-3.5 h-3 md:h-3.5 transition-transform group-hover:translate-x-0.5"></i>`;
-                    }
-                }
-            } catch (error) {
-                console.error("Dil çeviri işleminde bir hata oluştu, ancak sistem devam ediyor:", error);
-            }
-            
-            lucide.createIcons();
-        }
-
         function selectLanguage(lang) {
-            localStorage.setItem('selectedLang', lang);
-            applyLanguage(lang);
+            currentLang = lang;
             const splash = document.getElementById('splash-screen');
             if (splash) {
                 splash.classList.add('-translate-y-full', 'opacity-0');
                 setTimeout(() => { splash.style.display = 'none'; }, 1000);
             }
+            
+            const l = translations[lang] || translations.tr;
+            
+            // Navbar & Hero
+            document.getElementById('nav-about').innerText = l.navAbout;
+            document.getElementById('nav-projects').innerText = l.navProjects;
+            document.getElementById('nav-contact').innerText = l.navContact;
+            document.getElementById('mobile-nav-about').innerText = l.navAbout;
+            document.getElementById('mobile-nav-projects').innerText = l.navProjects;
+            document.getElementById('mobile-nav-contact').innerText = l.navContact;
+            
+            document.getElementById('hero-badge').innerText = l.heroBadge;
+            document.getElementById('hero-title').innerHTML = l.heroTitle;
+            document.getElementById('hero-desc').innerHTML = l.heroDesc;
+            document.getElementById('btn-view-projects').innerText = l.btnViewProjects;
+            document.getElementById('btn-contact-me').innerText = l.btnContactMe;
+            
+            // Hizmet Şartları
+            document.getElementById('terms-title').innerText = l.termsTitle;
+            document.getElementById('term-1').innerHTML = l.term1;
+            document.getElementById('term-2').innerHTML = l.term2;
+            document.getElementById('term-3').innerHTML = l.term3;
+
+            // Projeler Bölümü
+            document.getElementById('proj-title').innerText = l.projTitle;
+            document.getElementById('proj-subtitle').innerText = l.projSubtitle;
+            document.getElementById('filter-all').innerText = l.filterAll;
+            document.getElementById('filter-creative').innerText = l.filterCreative;
+            document.getElementById('filter-business').innerText = l.filterBusiness;
+            document.getElementById('filter-webapp').innerText = l.filterWebapp;
+            document.getElementById('no-apps-text').innerText = l.noAppsText;
+            document.getElementById('contact-title').innerText = l.contactTitle;
+            document.getElementById('contact-subtitle').innerText = l.contactSubtitle;
+            document.getElementById('footer-text').innerText = l.footerText;
+
+            // Tüm "İNCELE" butonlarını güncelle
+            document.querySelectorAll('.inspect-text').forEach(el => { el.innerText = l.inspectText; });
+
+            // Miuw AI Metinleri
+            document.getElementById('miuw-tooltip').innerText = l.miuwTooltip;
+            document.getElementById('miuw-sub').innerText = l.miuwSub;
+            document.getElementById('miuw-welcome').innerHTML = l.miuwWelcome;
+            document.getElementById('miuw-input').placeholder = l.miuwPlaceholder;
+
+            // KARTLARIN DİNAMİK OLARAK ÇEVRİLMESİ
+            for (let i = 1; i <= 13; i++) {
+                const cardData = l.cards[i];
+                if (!cardData) continue;
+
+                if (cardData.price && document.getElementById(`card-price-${i}`)) {
+                    document.getElementById(`card-price-${i}`).innerText = cardData.price;
+                }
+                if (cardData.desc && document.getElementById(`card-desc-${i}`)) {
+                    document.getElementById(`card-desc-${i}`).innerText = cardData.desc;
+                }
+                if (cardData.f1 && document.getElementById(`card-f1-${i}`)) {
+                    document.getElementById(`card-f1-${i}`).innerText = cardData.f1;
+                }
+                if (cardData.f2 && document.getElementById(`card-f2-${i}`)) {
+                    document.getElementById(`card-f2-${i}`).innerText = cardData.f2;
+                }
+                if (cardData.f3 && document.getElementById(`card-f3-${i}`)) {
+                    document.getElementById(`card-f3-${i}`).innerText = cardData.f3;
+                }
+                if (cardData.gift && document.getElementById(`card-gift-${i}`)) {
+                    document.getElementById(`card-gift-${i}`).innerText = cardData.gift;
+                }
+                if (cardData.note && document.getElementById(`card-note-${i}`)) {
+                    document.getElementById(`card-note-${i}`).innerText = cardData.note;
+                }
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            localStorage.removeItem('selectedLang'); 
-            
-            applyLanguage('tr'); 
-            
             const splash = document.getElementById('splash-screen');
             if (splash) {
                 splash.style.display = 'flex';
                 splash.classList.remove('-translate-y-full', 'opacity-0');
             }
-            
             lucide.createIcons();
         });
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const btnIcon = document.getElementById('mobile-menu-btn').querySelector('i');
-            
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                btnIcon.setAttribute('data-lucide', 'x');
-            } else {
-                menu.classList.add('hidden');
-                btnIcon.setAttribute('data-lucide', 'menu');
-            }
-            
-            lucide.createIcons();
+            menu.classList.toggle('hidden');
         }
 
-        document.querySelectorAll('.onerror-fallback').forEach(img => {
-            img.onerror = function() {
-                this.style.display = 'none';
-                this.parentElement.className += " bg-gradient-to-br from-pudra via-pudra-dark to-pudra-accent flex items-center justify-center text-white text-xs font-bold tracking-widest uppercase";
-                this.parentElement.innerText = "PREVIEW";
-            };
-        });
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.innerText = '☀️';
+            } else {
+                html.classList.add('dark');
+                icon.innerText = '🌙';
+            }
+        }
 
         const cursor = document.getElementById('magicCursor');
         window.addEventListener('mousemove', (e) => {
@@ -935,39 +940,15 @@
             setTimeout(() => { bubble.remove(); }, 1200);
         }
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            const icon = document.getElementById('theme-icon');
-            if(icon) icon.innerText = '🌙';
-        } else {
-            document.documentElement.classList.remove('dark');
-            const icon = document.getElementById('theme-icon');
-            if(icon) icon.innerText = '☀️';
-        }
-
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.theme = 'light';
-                if(icon) icon.innerText = '☀️';
-            } else {
-                html.classList.add('dark');
-                localStorage.theme = 'dark';
-                if(icon) icon.innerText = '🌙';
-            }
-        }
-
         function filterProjects(category, btnElement) {
             const cards = document.querySelectorAll('.card');
             const btns = document.querySelectorAll('.filter-btn');
+            const noAppsMsg = document.getElementById('no-apps-message');
 
             btns.forEach(btn => {
                 btn.classList.remove('bg-pudra-accent', 'text-white');
                 btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
             });
-            
             btnElement.classList.add('bg-pudra-accent', 'text-white');
             btnElement.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-300');
 
@@ -978,114 +959,81 @@
                     card.classList.add('hidden');
                 }
             });
+
+            if (category === 'webapp') {
+                noAppsMsg.classList.remove('hidden');
+            } else {
+                noAppsMsg.classList.add('hidden');
+            }
         }
-        
-function toggleMiuwChat() {
-  const chatWin = document.getElementById('miuw-chat-window');
-  chatWin.classList.toggle('hidden');
-  lucide.createIcons();
-}
 
+        function toggleMiuwChat() {
+            document.getElementById('miuw-chat-window').classList.toggle('hidden');
+        }
 
-function handleMiuwKeyPress(e) {
-  if (e.key === 'Enter') sendMiuwMessage();
-}
+        function handleMiuwKeyPress(e) {
+            if (e.key === 'Enter') sendMiuwMessage();
+        }
 
+        function sendMiuwMessage() {
+            const input = document.getElementById('miuw-input');
+            const text = input.value.trim();
+            if (!text) return;
 
-function sendMiuwMessage() {
-  const input = document.getElementById('miuw-input');
-  const messageText = input.value.trim();
-  if (!messageText) return;
+            const container = document.getElementById('miuw-messages');
+            container.innerHTML += `<div class="flex items-end justify-end gap-2"><div class="max-w-[80%] bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs p-3 rounded-2xl rounded-tr-none">${text}</div></div>`;
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
 
-  const messagesContainer = document.getElementById('miuw-messages');
+            setTimeout(() => {
+                const reply = getMiuwLocalizedResponse(text, currentLang);
+                container.innerHTML += `
+                    <div class="flex items-start gap-2">
+                        <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
+                        <div class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
+                            ${reply}
+                        </div>
+                    </div>
+                `;
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+        }
 
-  
-  const userBubble = `
-    <div class="flex items-end justify-end gap-2">
-      <div class="max-w-[80%] bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs p-3 rounded-2xl rounded-tr-none shadow-sm">
-        ${escapeHtml(messageText)}
-      </div>
-    </div>
-  `;
-  messagesContainer.innerHTML += userBubble;
-  input.value = '';
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        function getMiuwLocalizedResponse(input, lang) {
+            const t = input.toLowerCase();
 
-  
-  setTimeout(() => {
-    const aiResponse = getMiuwResponse(messageText);
-    const aiBubble = `
-      <div class="flex items-start gap-2">
-        <div class="w-7 h-7 rounded-full bg-pink-100 dark:bg-purple-950 flex items-center justify-center text-xs">🐱</div>
-        <div class="max-w-[80%] bg-pink-50 dark:bg-purple-950/40 border border-pink-200/60 dark:border-purple-800/40 text-gray-800 dark:text-purple-100 text-xs p-3 rounded-2xl rounded-tl-none shadow-sm">
-          ${aiResponse}
-        </div>
-      </div>
-    `;
-    messagesContainer.innerHTML += aiBubble;
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }, 500);
-}
-
-
-function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, function(m) {
-    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
-  });
-}
-
-
-function getMiuwResponse(input) {
-  const text = input.toLowerCase();
-
-    
-  if (text.includes('kimdir') || text.includes('ayliz kim') || text.includes('merve kim')) {
-    return "Merve Ayliz, web tasarımı ve UI/UX geliştirmeyi dijital sanata dönüştüren bir Front-End Developer ve tasarım öğrencisidir! 🎨✨";
-  }
-
-    
-  if (text.includes('süre') || text.includes('kaç gün') || text.includes('teslimat') || text.includes('zamanda')) {
-    return "Kişiye özel web projelerimiz yoğunluğa bağlı olarak **5 - 7 iş günü** içerisinde tamamlanıp yayına hazır hale getirilir! 🚀";
-  }
-
-    
-  if (text.includes('fiyat') || text.includes('ücret') || text.includes('kaç para') || text.includes('maliyet')) {
-    return "Hazır konsept vitrin sitelerimiz **4.000 TL**'den, çoklu dil ve entegrasyon içeren restoran/kafe sitelerimiz **9.000 TL**'den başlamaktadır! 🏷️";
-  }
-
-    
-  if (text.includes('ödeme') || text.includes('kapora') || text.includes('güven') || text.includes('şart')) {
-    return "Proje başlangıcında iş onayı için kapora alınır. Web siteniz tam istediğiniz gibi tasarlanıp onayınızı aldıktan sonra kalan ödeme gerçekleşir! 💳";
-  }
-
-
-  if (text.includes('hediye') || text.includes('kartvizit') || text.includes('sticker')) {
-    return "Evet! Tüm projelerimizde işletmenize özel **QR kodlu kartvizit** veya kargolarınız için **özel sticker & teşekkür kartı tasarımları** hediye edilmektedir! 🎁";
-  }
-
-    
-  if (text.includes('teknoloji') || text.includes('kod') || text.includes('yetenek') || text.includes('dil')) {
-    return "Projelerimizde HTML5, CSS3, Tailwind CSS, JavaScript (ES6+) ve PHP standartları kullanılmakta; güncel olarak React.js ve Node.js geliştirilmektedir! 💻";
-  }
-
-    
-  if (text.includes('iletişim') || text.includes('ulaş') || text.includes('mail') || text.includes('instagram')) {
-    return "Bize sayfanın altındaki İletişim bölümünden, Instagram (**@ayliz.dev**) veya doğrudan E-Posta (**merveayliz2301@gmail.com**) üzerinden ulaşabilirsiniz! 📩";
-  }
-
-    
-  if (text.includes('özel') || text.includes('sıfırdan') || text.includes('istek') || text.includes('farklı')) {
-    return "Kesinlikle! İşletmenizin ruhuna, renk konseptine ve hedeflerine tamamen özel çözümler tasarlıyoruz. 🌸";
-  }
-
-    
-  if (text.includes('merhaba') || text.includes('selam') || text.includes('miu') || text.includes('miyav')) {
-    return "Miyavvv! 🐾 Hoş geldin! Harika bir web sitesi hayalin için buradayım, bana dilediğini sorabilirsin!";
-  }
-
-    
-  return "Miyav! Bu sorunun detayları için doğrudan Merve Ayliz ile **İletişim** bölümünden veya Instagram'dan iletişime geçebilirsin! 🐾✨";
-}
+            if (lang === 'en') {
+                if (t.includes('who') || t.includes('merve') || t.includes('ayliz')) return "Merve Ayliz is a student and front-end developer improving herself in web design. She builds projects with AI every day! 🌸✨";
+                if (t.includes('apex') || t.includes('gear')) return "Apex Gear is one of our modern tech interface web projects! ⚡";
+                if (t.includes('yoga') || t.includes('wellness')) return "Our Yoga & Wellness studio template is 8,000 TL with a calming interface 🧘‍♀️🌿";
+                if (t.includes('price') || t.includes('cost')) return "Showcase sites are 4,000 TL, boutique/restaurant templates are 9,000 TL, and Yoga/organization themes range from 8,000 to 12,000 TL! 🏷️";
+                if (t.includes('time') || t.includes('day')) return "All web projects are delivered within an average of **5 - 7 business days**! 🚀";
+                if (t.includes('youtube') || t.includes('video')) return "You can follow Ayliz's daily development journey on her **YouTube (@aylizdev)** channel! 📺✨";
+                return "Meow! 🐾 Feel free to ask me anything about our projects, prices, or the development process!";
+            } else if (lang === 'de') {
+                if (t.includes('wer') || t.includes('merve') || t.includes('ayliz')) return "Merve Ayliz ist eine Webdesign-Studentin und Front-End-Entwicklerin. Sie entwickelt jeden Tag Projekte mit KI! 🌸✨";
+                if (t.includes('apex') || t.includes('gear')) return "Apex Gear ist eines unserer modernen Technologie-Webprojekte! ⚡";
+                if (t.includes('yoga') || t.includes('wellness')) return "Unser Yoga & Wellness Template kostet 8.000 TL 🧘‍♀️🌿";
+                if (t.includes('preis') || t.includes('kosten')) return "Vitrinen-Websites kosten 4.000 TL, Templates 9.000 TL! 🏷️";
+                if (t.includes('zeit') || t.includes('tag')) return "Alle Projekte werden innerhalb von **5 - 7 Werktagen** geliefert! 🚀";
+                return "Miau! 🐾 Du kannst mich alles über unsere Projekte oder Preise fragen!";
+            } else if (lang === 'ko') {
+                if (t.includes('누구') || t.includes('merve') || t.includes('ayliz')) return "멜베 아일리즈는 웹 디자인을 공부하는 학생이자 프론트엔드 개발자입니다! 🌸✨";
+                if (t.includes('apex') || t.includes('gear')) return "Apex Gear는 모던한 기술 인터페이스 웹 프로젝트입니다! ⚡";
+                if (t.includes('yoga') || t.includes('wellness')) return "요가 & 웰니스 스튜디오 템플릿은 8,000 TL입니다 🧘‍♀️️🌿";
+                if (t.includes('가격') || t.includes('비용')) return "쇼케이스 사이트는 4,000 TL, 레스토랑 템플릿은 9,000 TL입니다! 🏷️";
+                if (t.includes('기간') || t.includes('일')) return "모든 웹 프로젝트는 평균 **5~7영업일** 내에 전달됩니다! 🚀";
+                return "야옹! 🐾 프로젝트나 가격에 대해 궁금한 점이 있으시면 언제든지 물어보세요!";
+            } else {
+                if (t.includes('kimdir') || t.includes('merve') || t.includes('ayliz')) return "Merve Ayliz, web tasarım ve kodlama alanında kendini geliştiren bir öğrenci ve front-end geliştiricidir. Her gün yapay zeka ile projeler üretir! 🌸✨";
+                if (t.includes('apex') || t.includes('gear')) return "Apex Gear, platformumuzda yer alan modern ve dinamik teknoloji arayüzlü web projelerinden biridir! ⚡";
+                if (t.includes('yoga') || t.includes('wellness')) return "Yoga & Wellness stüdyo şablonumuz 8.000 TL'dir. Sakinleştirici arayüzü ve kurs programı modülüyle harika bir butik çözümdür 🧘‍♀️🌿";
+                if (t.includes('fiyat') || t.includes('ücret')) return "Vitrin sitelerimiz 4.000 TL, butik/restoran şablonlarımız 9.000 TL, Yoga ve organizasyon temalarımız ise 8.000 - 12.000 TL arasında değişmektedir! 🏷️";
+                if (t.includes('süre') || t.includes('kaç gün')) return "Tüm web projeleri yoğunluğa göre ortalama **5 - 7 iş günü** içinde teslim edilir 🚀";
+                if (t.includes('youtube') || t.includes('video')) return "Ayliz'in günlük gelişim süreçlerini ve içeriklerini **YouTube (@aylizdev)** kanalından takip edebilirsin! 📺✨";
+                return "Miyav! 🐾 Sana nasıl yardımcı olabilirim? Projelerimiz, fiyatlar veya kodlama süreci hakkında dilediğini sorabilirsin!";
+            }
+        }
     </script>
 </body>
 </html>
